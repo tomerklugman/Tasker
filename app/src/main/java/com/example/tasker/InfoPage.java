@@ -61,8 +61,8 @@ public class InfoPage extends AppCompatActivity {
             name.setText(Name);
             mail.setText(Mail);
 
-
             Toast.makeText(InfoPage.this,"logged in",Toast.LENGTH_SHORT).show();
+
         } else { // regular sign in
 
           // gets last sign in
@@ -89,7 +89,7 @@ public class InfoPage extends AppCompatActivity {
                 }
             });
 
-            Toast.makeText(InfoPage.this,"logged in",Toast.LENGTH_SHORT).show();
+
 
 
 

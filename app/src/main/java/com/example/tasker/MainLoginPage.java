@@ -30,18 +30,22 @@ public class MainLoginPage extends AppCompatActivity {
 
     //---------------------------------------------google auth
 
-
     //---------------------------------------------regular user auth
 
     EditText signupPassword,signupUsername;
     Button signupButton;
     TextView loginRedirectText;
 
-    //FirebaseAuth auth;
+    //---------------------------------------------regular user auth
+
+    //---------------------------------------------FirebaseAuth auth;
+
     FirebaseDatabase database;
     DatabaseReference reference;
 
-    //---------------------------------------------regular user auth
+    //---------------------------------------------FirebaseAuth auth;
+
+
 
 
 
