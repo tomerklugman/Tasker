@@ -98,11 +98,12 @@ public class login_regular extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
 
                 if (snapshot.exists()) {
-                    loginUsername.setError(null);
-                    String passwordFromDB = snapshot.child(userPassword).child("password").getValue(String.class);
+                    //loginUsername.setError(null);
+                    String passwordFromDB = snapshot.child(userUsername).child("password").getValue(String.class);
+                    Toast.makeText(login_regular.this,passwordFromDB,Toast.LENGTH_SHORT).show();
 
-                    if (!Objects.equals(passwordFromDB, userPassword)) {
-                        loginUsername.setError(null);
+                    if (Objects.equals(passwordFromDB, userPassword)) {
+                        //loginUsername.setError(null);
                         Intent intent = new Intent(login_regular.this, InfoPage.class);
                         startActivity(intent);
                         Toast.makeText(login_regular.this,"logged in",Toast.LENGTH_SHORT).show();
