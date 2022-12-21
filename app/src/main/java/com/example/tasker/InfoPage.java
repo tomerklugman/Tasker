@@ -67,34 +67,6 @@ public class InfoPage extends AppCompatActivity {
 
             name.setText(userGettersSetters.username);
             mail.setText(userGettersSetters.password);
-/*
-          // gets last sign in
-            reference=FirebaseDatabase.getInstance().getReference().child("users");
-            Query query = reference.limitToLast(1);
-            query.addValueEventListener(new ValueEventListener() {
-                @Override
-                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                    for (DataSnapshot child: dataSnapshot.getChildren()) {
-
-                       String passdb = child.child("password").getValue().toString();
-                       String userdb = child.child("username").getValue().toString();
-
-
-
-                        //pass.setText(passdb);
-                        //user.setText(userdb);
-                    }
-                }
-
-
-                @Override
-                public void onCancelled(@NonNull DatabaseError databaseError) {
-
-                }
-            });
-
-
-*/
 
 
         }

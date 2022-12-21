@@ -32,7 +32,7 @@ public class MainLoginPage extends AppCompatActivity {
 
     //---------------------------------------------regular user auth
 
-    EditText signupPassword,signupUsername;
+    EditText signupPassword, signupUsername;
     Button signupButton;
     TextView loginRedirectText;
 
@@ -46,24 +46,21 @@ public class MainLoginPage extends AppCompatActivity {
     //---------------------------------------------FirebaseAuth auth;
 
 
-
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_login_page);
 
         //---------------------------------------------google auth start
-        google_img=findViewById(R.id.google_sign_in);
-        gso=new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).requestEmail().build();
-        gsc=GoogleSignIn.getClient(this,gso);
+        google_img = findViewById(R.id.google_sign_in);
+        gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).requestEmail().build();
+        gsc = GoogleSignIn.getClient(this, gso);
         google_img.setOnClickListener(new View.OnClickListener() { // google sign in button
             @Override
             public void onClick(View view) {
 
-                Intent intent=gsc.getSignInIntent();
-                startActivityForResult(intent,100);
+                Intent intent = gsc.getSignInIntent();
+                startActivityForResult(intent, 100);
             }
         });
 
@@ -88,7 +85,7 @@ public class MainLoginPage extends AppCompatActivity {
                 String user = signupUsername.getText().toString().trim();
                 String pass = signupPassword.getText().toString().trim();
 
-                userGettersSetters userGettersSetters = new userGettersSetters(user,pass);
+                userGettersSetters userGettersSetters = new userGettersSetters(user, pass);
                 reference.child(user).setValue(userGettersSetters);
 
                 Toast.makeText(MainLoginPage.this, "you have signed up succesfully", Toast.LENGTH_SHORT).show();
@@ -101,12 +98,11 @@ public class MainLoginPage extends AppCompatActivity {
         loginRedirectText.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(MainLoginPage.this,login_regular.class));
+                startActivity(new Intent(MainLoginPage.this, login_regular.class));
             }
         });
 
         //---------------------------------------------regular user auth
-
 
 
     }
@@ -116,21 +112,34 @@ public class MainLoginPage extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if(requestCode==100) {
+
+
+        if (requestCode == 100) {
             Task<GoogleSignInAccount> task;
             task = GoogleSignIn.getSignedInAccountFromIntent(data);
             try {
+
+                database = FirebaseDatabase.getInstance();
+                reference = database.getReference("users");
+
+
+                String user = task.getResult().getDisplayName();
+                String pass = task.getResult().getEmail();
+
+                userGettersSetters userGettersSetters = new userGettersSetters(user,pass);
+                reference.child(user).setValue(userGettersSetters);
+
                 task.getResult(ApiException.class);
                 finish();
-                Intent intent=new Intent(getApplicationContext(), InfoPage.class);
+                Intent intent = new Intent(getApplicationContext(), InfoPage.class);
                 startActivity(intent);
 
             } catch (ApiException e) {
                 Toast.makeText(this, "Error", Toast.LENGTH_SHORT).show();
             }
-        }
 
         }
 //---------------------------------------------google auth
 
+    }
 }
