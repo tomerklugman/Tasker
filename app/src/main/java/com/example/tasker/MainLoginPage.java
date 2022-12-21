@@ -67,6 +67,7 @@ public class MainLoginPage extends AppCompatActivity {
             }
         });
 
+// check push
 
         //---------------------------------------------google auth end
 
