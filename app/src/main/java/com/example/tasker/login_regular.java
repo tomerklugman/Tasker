@@ -22,6 +22,8 @@ import java.util.Objects;
 
 public class login_regular extends AppCompatActivity {
 
+
+
     EditText loginUsername, loginPassword;
     TextView signupRedirectText;
     Button loginButton;
@@ -83,6 +85,10 @@ public class login_regular extends AppCompatActivity {
     public void checkUser() {
         String userUsername = loginUsername.getText().toString().trim();
         String userPassword = loginPassword.getText().toString().trim();
+
+        userGettersSetters.username=userUsername; // user login in constructor
+        userGettersSetters.password=userPassword;
+
 
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("users");
         Query checkUserDatabase = reference.orderByChild("username").equalTo(userUsername);

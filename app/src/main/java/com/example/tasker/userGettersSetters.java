@@ -2,7 +2,7 @@ package com.example.tasker;
 
 public class userGettersSetters {
 
-    String username,password;
+    public static String username,password;
 
     public userGettersSetters() {
     }
@@ -24,7 +24,6 @@ public class userGettersSetters {
     }
 
     public userGettersSetters(String username, String password) {
-
         this.username = username;
         this.password = password;
     }
