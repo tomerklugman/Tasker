@@ -54,7 +54,7 @@ public class MainLoginPage extends AppCompatActivity {
 
     //---------------------------------------------drop down menu
 
-    String[] item = {"Parent","Child"};
+    String[] item = {"parent","child"};
 
     AutoCompleteTextView autoCompleteTextView;
 
