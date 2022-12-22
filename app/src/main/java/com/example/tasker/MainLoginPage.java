@@ -6,9 +6,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -44,16 +48,44 @@ public class MainLoginPage extends AppCompatActivity {
 
     FirebaseDatabase database;
     DatabaseReference reference;
-    DatabaseReference reference1;
 
 
     //---------------------------------------------FirebaseAuth auth;
+
+    //---------------------------------------------drop down menu
+
+    String[] item = {"Parent","Child"};
+
+    AutoCompleteTextView autoCompleteTextView;
+
+    ArrayAdapter<String> adapterItems;
+
+    //---------------------------------------------drop down menu
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_login_page);
+
+        //---------------------------------------------drop down menu
+
+        autoCompleteTextView = findViewById(R.id.auto_complete_txt);
+        adapterItems = new ArrayAdapter<String>(this,R.layout.list_item,item);
+
+        autoCompleteTextView.setAdapter(adapterItems);
+
+        autoCompleteTextView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+
+                String item = adapterView.getItemAtPosition(i).toString();
+                Toast.makeText(MainLoginPage.this,"Chose "+ item,Toast.LENGTH_SHORT).show();
+
+            }
+        });
+
+        //---------------------------------------------drop down menu
 
         //---------------------------------------------google auth start
         google_img = findViewById(R.id.google_sign_in);
@@ -73,10 +105,12 @@ public class MainLoginPage extends AppCompatActivity {
 
         //---------------------------------------------regular user auth start
 
+
+
         signupUsername = findViewById(R.id.signup_regular_username);
         signupPassword = findViewById(R.id.signup_regular_password);
-        signupStatus = findViewById(R.id.signup_regular_status);
-        signupHouse = findViewById(R.id.signup_regular_house);
+        signupStatus = findViewById(R.id.auto_complete_txt);
+        //signupHouse = findViewById(R.id.signup_regular_house);
 
         signupButton = findViewById(R.id.signup_regular_button);
         loginRedirectText = findViewById(R.id.signup_regular_signIN);
@@ -92,15 +126,15 @@ public class MainLoginPage extends AppCompatActivity {
                 String user = signupUsername.getText().toString().trim();
                 String pass = signupPassword.getText().toString().trim();
                 String status = signupStatus.getText().toString().trim();
-                String house = signupHouse.getText().toString().trim();
+               // String house = signupHouse.getText().toString().trim();
 
-                userGettersSetters userGettersSetters = new userGettersSetters(user, pass, status,house);
+                userGettersSetters userGettersSetters = new userGettersSetters(user, pass,status);
                 reference.child(user).setValue(userGettersSetters);
 
-                if(Objects.equals(status, "parent")){
-                    reference1 = database.getReference("houses");
-                    reference1.child(house).child("1").setValue("");
-                }
+              //  if(Objects.equals(status, "parent")){
+              //      reference1 = database.getReference("houses");
+              //      reference1.child(house).child("1").setValue("");
+             //   }
 
                 Toast.makeText(MainLoginPage.this, "you have signed up succesfully", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(MainLoginPage.this, login_regular.class);

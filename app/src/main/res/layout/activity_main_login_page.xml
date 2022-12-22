@@ -28,7 +28,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="30dp"
-        app:cardCornerRadius="30dp"
+        app:cardCornerRadius="0dp"
         app:cardElevation="20dp">
 
 
@@ -72,27 +72,31 @@
                 android:textSize="15dp"
                 android:textColor="@color/black"/>
 
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:id="@+id/signup_regular_status"
-                android:background="@drawable/square_for_login"
-                android:layout_marginTop="20dp"
-                android:padding="8dp"
-                android:hint="Enter parent/child"
-                android:textSize="15dp"
-                android:textColor="@color/black"/>
 
-            <EditText
+
+            <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
-                android:id="@+id/signup_regular_house"
-                android:background="@drawable/square_for_login"
-                android:layout_marginTop="20dp"
-                android:padding="8dp"
-                android:hint="Enter house"
-                android:textSize="15dp"
-                android:textColor="@color/black"/>
+                android:layout_marginTop="10dp"
+
+
+                android:hint="@string/select"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                >
+
+                <AutoCompleteTextView
+
+                    android:id="@+id/auto_complete_txt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="8dp"
+
+                    android:inputType="none"/>
+
+
+
+
+            </com.google.android.material.textfield.TextInputLayout>
 
 
             <Button
@@ -120,6 +124,8 @@
 
 
         </LinearLayout>
+
+
 
 
         </androidx.cardview.widget.CardView>

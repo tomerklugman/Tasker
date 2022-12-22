@@ -46,6 +46,12 @@ public class userGettersSetters {
         this.house = house;
     }
 
+    public userGettersSetters(String username, String password,String status) {
+        this.username = username;
+        this.password = password;
+        this.status = status;
+    }
+
     public userGettersSetters(String username, String password) {
         this.username = username;
         this.password = password;
