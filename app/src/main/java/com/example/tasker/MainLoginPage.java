@@ -21,6 +21,8 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.Objects;
+
 public class MainLoginPage extends AppCompatActivity {
     //---------------------------------------------google auth
 
@@ -32,7 +34,7 @@ public class MainLoginPage extends AppCompatActivity {
 
     //---------------------------------------------regular user auth
 
-    EditText signupPassword, signupUsername;
+    EditText signupPassword, signupUsername,signupStatus,signupHouse;
     Button signupButton;
     TextView loginRedirectText;
 
@@ -42,6 +44,8 @@ public class MainLoginPage extends AppCompatActivity {
 
     FirebaseDatabase database;
     DatabaseReference reference;
+    DatabaseReference reference1;
+
 
     //---------------------------------------------FirebaseAuth auth;
 
@@ -71,6 +75,9 @@ public class MainLoginPage extends AppCompatActivity {
 
         signupUsername = findViewById(R.id.signup_regular_username);
         signupPassword = findViewById(R.id.signup_regular_password);
+        signupStatus = findViewById(R.id.signup_regular_status);
+        signupHouse = findViewById(R.id.signup_regular_house);
+
         signupButton = findViewById(R.id.signup_regular_button);
         loginRedirectText = findViewById(R.id.signup_regular_signIN);
 
@@ -84,9 +91,16 @@ public class MainLoginPage extends AppCompatActivity {
 
                 String user = signupUsername.getText().toString().trim();
                 String pass = signupPassword.getText().toString().trim();
+                String status = signupStatus.getText().toString().trim();
+                String house = signupHouse.getText().toString().trim();
 
-                userGettersSetters userGettersSetters = new userGettersSetters(user, pass);
+                userGettersSetters userGettersSetters = new userGettersSetters(user, pass, status,house);
                 reference.child(user).setValue(userGettersSetters);
+
+                if(Objects.equals(status, "parent")){
+                    reference1 = database.getReference("houses");
+                    reference1.child(house).child("1").setValue("");
+                }
 
                 Toast.makeText(MainLoginPage.this, "you have signed up succesfully", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(MainLoginPage.this, login_regular.class);
