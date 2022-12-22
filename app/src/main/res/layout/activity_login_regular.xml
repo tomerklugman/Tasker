@@ -52,7 +52,7 @@
 
             <EditText
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="wrap_content"
                 android:id="@+id/signin_regular_username"
                 android:background="@drawable/square_for_login"
                 android:layout_marginTop="40dp"
@@ -62,7 +62,7 @@
 
             <EditText
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="wrap_content"
                 android:id="@+id/signin_regular_password"
                 android:background="@drawable/square_for_login"
                 android:layout_marginTop="20dp"
@@ -72,7 +72,7 @@
 
             <Button
                 android:layout_width="match_parent"
-                android:layout_height="60dp"
+                android:layout_height="wrap_content"
                 android:text="Sign In"
                 android:id="@+id/signin_regular_button"
                 android:textSize="18sp"
