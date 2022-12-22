@@ -21,6 +21,8 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.Objects;
+
 public class MainLoginPage extends AppCompatActivity {
     //---------------------------------------------google auth
 
@@ -30,19 +32,22 @@ public class MainLoginPage extends AppCompatActivity {
 
     //---------------------------------------------google auth
 
-
     //---------------------------------------------regular user auth
 
-    EditText signupPassword,signupUsername;
+    EditText signupPassword, signupUsername,signupStatus,signupHouse;
     Button signupButton;
     TextView loginRedirectText;
 
-    //FirebaseAuth auth;
-    FirebaseDatabase database;
-    DatabaseReference reference;
-
     //---------------------------------------------regular user auth
 
+    //---------------------------------------------FirebaseAuth auth;
+
+    FirebaseDatabase database;
+    DatabaseReference reference;
+    DatabaseReference reference1;
+
+
+    //---------------------------------------------FirebaseAuth auth;
 
 
     @Override
@@ -51,15 +56,15 @@ public class MainLoginPage extends AppCompatActivity {
         setContentView(R.layout.activity_main_login_page);
 
         //---------------------------------------------google auth start
-        google_img=findViewById(R.id.google_sign_in);
-        gso=new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).requestEmail().build();
-        gsc=GoogleSignIn.getClient(this,gso);
+        google_img = findViewById(R.id.google_sign_in);
+        gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).requestEmail().build();
+        gsc = GoogleSignIn.getClient(this, gso);
         google_img.setOnClickListener(new View.OnClickListener() { // google sign in button
             @Override
             public void onClick(View view) {
 
-                Intent intent=gsc.getSignInIntent();
-                startActivityForResult(intent,100);
+                Intent intent = gsc.getSignInIntent();
+                startActivityForResult(intent, 100);
             }
         });
 
@@ -70,6 +75,9 @@ public class MainLoginPage extends AppCompatActivity {
 
         signupUsername = findViewById(R.id.signup_regular_username);
         signupPassword = findViewById(R.id.signup_regular_password);
+        signupStatus = findViewById(R.id.signup_regular_status);
+        signupHouse = findViewById(R.id.signup_regular_house);
+
         signupButton = findViewById(R.id.signup_regular_button);
         loginRedirectText = findViewById(R.id.signup_regular_signIN);
 
@@ -83,9 +91,16 @@ public class MainLoginPage extends AppCompatActivity {
 
                 String user = signupUsername.getText().toString().trim();
                 String pass = signupPassword.getText().toString().trim();
+                String status = signupStatus.getText().toString().trim();
+                String house = signupHouse.getText().toString().trim();
 
-                userGettersSetters userGettersSetters = new userGettersSetters(user,pass);
+                userGettersSetters userGettersSetters = new userGettersSetters(user, pass, status,house);
                 reference.child(user).setValue(userGettersSetters);
+
+                if(Objects.equals(status, "parent")){
+                    reference1 = database.getReference("houses");
+                    reference1.child(house).child("1").setValue("");
+                }
 
                 Toast.makeText(MainLoginPage.this, "you have signed up succesfully", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(MainLoginPage.this, login_regular.class);
@@ -97,12 +112,11 @@ public class MainLoginPage extends AppCompatActivity {
         loginRedirectText.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(MainLoginPage.this,login_regular.class));
+                startActivity(new Intent(MainLoginPage.this, login_regular.class));
             }
         });
 
         //---------------------------------------------regular user auth
-
 
 
     }
@@ -112,21 +126,34 @@ public class MainLoginPage extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if(requestCode==100) {
+
+
+        if (requestCode == 100) {
             Task<GoogleSignInAccount> task;
             task = GoogleSignIn.getSignedInAccountFromIntent(data);
             try {
+
+                database = FirebaseDatabase.getInstance();
+                reference = database.getReference("users");
+
+
+                String user = task.getResult().getDisplayName();
+                String pass = task.getResult().getEmail();
+
+                userGettersSetters userGettersSetters = new userGettersSetters(user,pass);
+                reference.child(user).setValue(userGettersSetters);
+
                 task.getResult(ApiException.class);
                 finish();
-                Intent intent=new Intent(getApplicationContext(), InfoPage.class);
+                Intent intent = new Intent(getApplicationContext(), InfoPage.class);
                 startActivity(intent);
 
             } catch (ApiException e) {
                 Toast.makeText(this, "Error", Toast.LENGTH_SHORT).show();
             }
-        }
 
         }
 //---------------------------------------------google auth
 
+    }
 }

@@ -22,7 +22,9 @@ import java.util.Objects;
 
 public class login_regular extends AppCompatActivity {
 
-    EditText loginUsername, loginPassword;
+
+
+    EditText loginUsername, loginPassword,loginHouse;
     TextView signupRedirectText;
     Button loginButton;
 
@@ -34,6 +36,8 @@ public class login_regular extends AppCompatActivity {
 
         loginUsername = findViewById(R.id.signin_regular_username);
         loginPassword = findViewById(R.id.signin_regular_password);
+        loginHouse = findViewById(R.id.signin_regular_house);
+
         loginButton = findViewById(R.id.signin_regular_button);
         signupRedirectText = findViewById(R.id.signin_regular_signUP);
 
@@ -83,6 +87,12 @@ public class login_regular extends AppCompatActivity {
     public void checkUser() {
         String userUsername = loginUsername.getText().toString().trim();
         String userPassword = loginPassword.getText().toString().trim();
+        String userHouse = loginHouse.getText().toString().trim();
+
+        userGettersSetters.username=userUsername; // user login in constructor
+        userGettersSetters.password=userPassword;
+        userGettersSetters.house=userHouse;
+
 
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("users");
         Query checkUserDatabase = reference.orderByChild("username").equalTo(userUsername);
@@ -93,16 +103,24 @@ public class login_regular extends AppCompatActivity {
 
                 if (snapshot.exists()) {
                     loginUsername.setError(null);
-                    String passwordFromDB = snapshot.child(userPassword).child("password").getValue(String.class);
+                    String passwordFromDB = snapshot.child(userUsername).child("password").getValue(String.class);
+                    String houseFromDB = snapshot.child(userUsername).child("house").getValue(String.class);
 
-                    if (!Objects.equals(passwordFromDB, userPassword)) {
+                    if (Objects.equals(passwordFromDB, userPassword)) {
                         loginUsername.setError(null);
-                        Intent intent = new Intent(login_regular.this, InfoPage.class);
-                        startActivity(intent);
-                        Toast.makeText(login_regular.this,"logged in",Toast.LENGTH_SHORT).show();
+
                     } else {
                         loginPassword.setError("invalid input");
                         loginPassword.requestFocus();
+                    }   if (Objects.equals(houseFromDB, userHouse)){
+                        Intent intent = new Intent(login_regular.this, InfoPage.class);
+                        startActivity(intent);
+                        Toast.makeText(login_regular.this,"logged in",Toast.LENGTH_SHORT).show();
+
+                    } else {
+                        loginHouse.setError("invalid input");
+                        loginHouse.requestFocus();
+
                     }
                 } else {
                     loginUsername.setError("user does not exist");

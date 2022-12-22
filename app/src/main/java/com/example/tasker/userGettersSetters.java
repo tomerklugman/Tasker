@@ -2,7 +2,7 @@ package com.example.tasker;
 
 public class userGettersSetters {
 
-    String username,password;
+    public static String username,password,status,house;
 
     public userGettersSetters() {
     }
@@ -23,10 +23,33 @@ public class userGettersSetters {
         this.password = password;
     }
 
-    public userGettersSetters(String username, String password) {
+    public String getStatus() {
+        return status;
+    }
 
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public String getHouse() {
+        return house;
+    }
+
+    public void setHouse(String house) {
+        this.house = house;
+    }
+
+    public userGettersSetters(String username, String password,String status,String house) {
         this.username = username;
         this.password = password;
+        this.status = status;
+        this.house = house;
+    }
+
+    public userGettersSetters(String username, String password) {
+        this.username = username;
+        this.password = password;
+
     }
 
 

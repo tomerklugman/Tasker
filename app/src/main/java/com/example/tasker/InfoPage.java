@@ -57,40 +57,16 @@ public class InfoPage extends AppCompatActivity {
             String Name=account.getDisplayName();
             String Mail=account.getEmail();
 
-
             name.setText(Name);
             mail.setText(Mail);
 
 
             Toast.makeText(InfoPage.this,"logged in",Toast.LENGTH_SHORT).show();
+
         } else { // regular sign in
 
-          // gets last sign in
-            reference=FirebaseDatabase.getInstance().getReference().child("users");
-            Query query = reference.limitToLast(1);
-            query.addValueEventListener(new ValueEventListener() {
-                @Override
-                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                    for (DataSnapshot child: dataSnapshot.getChildren()) {
-
-                       String passdb = child.child("password").getValue().toString();
-                       String userdb = child.child("username").getValue().toString();
-
-
-                        pass.setText(passdb);
-                        user.setText(userdb);
-                    }
-                }
-
-
-                @Override
-                public void onCancelled(@NonNull DatabaseError databaseError) {
-
-                }
-            });
-
-            Toast.makeText(InfoPage.this,"logged in",Toast.LENGTH_SHORT).show();
-
+            name.setText(userGettersSetters.username);
+            mail.setText(userGettersSetters.password);
 
 
         }
