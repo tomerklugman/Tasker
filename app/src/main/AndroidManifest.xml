@@ -15,6 +15,15 @@
         android:theme="@style/Theme.Tasker"
         tools:targetApi="31">
         <activity
+            android:name=".child_window"
+            android:exported="false"
+            android:label="@string/title_activity_child_window"
+            android:theme="@style/Theme.Tasker.NoActionBar">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".login_regular"
             android:exported="false">
             <meta-data
