@@ -63,7 +63,8 @@ public class login_regular extends AppCompatActivity {
         if (val.isEmpty()) {
             loginUsername.setError("username cant be empty");
             return false;
-        } else {
+        }
+        else {
             loginUsername.setError(null);
             return true;
         }

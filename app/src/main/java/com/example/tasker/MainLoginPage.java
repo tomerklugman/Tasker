@@ -1,5 +1,6 @@
 package com.example.tasker;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -22,8 +23,12 @@ import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.Objects;
 
@@ -38,7 +43,8 @@ public class MainLoginPage extends AppCompatActivity {
 
     //---------------------------------------------regular user auth
 
-    EditText signupPassword, signupUsername,signupStatus,signupHouse;
+    EditText signupPassword, signupUsername,signupStatus;
+    // EditText signupHouse;
     Button signupButton;
     TextView loginRedirectText;
 
@@ -123,22 +129,55 @@ public class MainLoginPage extends AppCompatActivity {
                 reference = database.getReference("users");
 
 
+
+
                 String user = signupUsername.getText().toString().trim();
                 String pass = signupPassword.getText().toString().trim();
                 String status = signupStatus.getText().toString().trim();
-               // String house = signupHouse.getText().toString().trim();
+                // String house = signupHouse.getText().toString().trim();
 
-                userGettersSetters userGettersSetters = new userGettersSetters(user, pass,status);
-                reference.child(user).setValue(userGettersSetters);
+                DatabaseReference reference = FirebaseDatabase.getInstance().getReference("users");
+                Query checkUserDatabase = reference.orderByChild("username");
 
-              //  if(Objects.equals(status, "parent")){
-              //      reference1 = database.getReference("houses");
-              //      reference1.child(house).child("1").setValue("");
-             //   }
+                checkUserDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
 
-                Toast.makeText(MainLoginPage.this, "you have signed up succesfully", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(MainLoginPage.this, login_regular.class);
-                startActivity(intent);
+                        if (snapshot.exists()) {
+                            signupUsername.setError(null);
+                            String userFromDB = snapshot.child(user).child("username").getValue(String.class);
+
+                            if (!Objects.equals(userFromDB, user)) {
+                                userGettersSetters userGettersSetters = new userGettersSetters(user,pass,status);
+                                reference.child(user).setValue(userGettersSetters);
+
+                                //  if(Objects.equals(status, "parent")){
+                                //      reference1 = database.getReference("houses");
+                                //      reference1.child(house).child("1").setValue("");
+                                //   }
+
+                                Toast.makeText(MainLoginPage.this, "you have signed up succesfully", Toast.LENGTH_SHORT).show();
+                                Intent intent = new Intent(MainLoginPage.this, login_regular.class);
+                                startActivity(intent);
+
+                            } else {
+
+                                signupUsername.setError(null);
+                                signupUsername.setError("username in use");
+                                signupUsername.requestFocus();
+
+                            }
+                        }
+
+
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
+
 
             }
         });
