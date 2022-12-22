@@ -130,7 +130,6 @@ public class MainLoginPage extends AppCompatActivity {
 
 
 
-
                 String user = signupUsername.getText().toString().trim();
                 String pass = signupPassword.getText().toString().trim();
                 String status = signupStatus.getText().toString().trim();
