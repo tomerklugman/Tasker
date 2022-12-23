@@ -25,8 +25,12 @@ import com.google.firebase.database.ValueEventListener;
 
 public class InfoPage extends AppCompatActivity {
 
-    TextView name,mail,pass,user;
+    TextView name;
+    TextView mail;
+    TextView status;
     Button logout;
+
+    String statusFromDB;
 
     GoogleSignInOptions gso;
     GoogleSignInClient gsc;
@@ -41,8 +45,8 @@ public class InfoPage extends AppCompatActivity {
         setContentView(R.layout.info_page);
         name=findViewById(R.id.name);
         mail=findViewById(R.id.mail);
-        pass=findViewById(R.id.password);
-        user=findViewById(R.id.username);
+        //user=findViewById(R.id.password);
+        status=findViewById(R.id.status);
         logout=findViewById(R.id.logout);
 
         gso=new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).requestEmail().build();
@@ -67,6 +71,23 @@ public class InfoPage extends AppCompatActivity {
 
             name.setText(userGettersSetters.username);
             mail.setText(userGettersSetters.password);
+
+            DatabaseReference reference = FirebaseDatabase.getInstance().getReference("users");
+            Query checkstatusDatabase = reference.orderByChild("username").equalTo(userGettersSetters.username);
+
+            checkstatusDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    statusFromDB = snapshot.child(userGettersSetters.username).child("status").getValue(String.class);
+
+                    status.setText(statusFromDB);
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+
+                }
+            });
 
 
         }

@@ -57,6 +57,11 @@ public class userGettersSetters {
         this.password = password;
 
     }
+    public userGettersSetters(String house) {
+        this.house = house;
+
+
+    }
 
 
 }

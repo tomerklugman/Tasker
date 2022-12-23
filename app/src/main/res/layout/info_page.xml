@@ -48,25 +48,25 @@
         />
 
     <TextView
-        android:id="@+id/username"
+        android:id="@+id/status"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/name"
         android:layout_marginTop="41dp"
         android:gravity="center"
-        android:text="username"
+        android:text="status"
         android:textColor="@color/black"
         android:textSize="30sp"
         android:textStyle="bold" />
 
     <TextView
-        android:id="@+id/password"
+        android:id="@+id/house"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/name"
         android:layout_marginTop="81dp"
         android:gravity="center"
-        android:text="password"
+        android:text="house"
         android:textColor="@color/black"
         android:textSize="30sp"
         android:textStyle="bold" />

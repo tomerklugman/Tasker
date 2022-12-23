@@ -102,7 +102,7 @@ public class login_regular extends AppCompatActivity {
 
                     if (Objects.equals(passwordFromDB, userPassword)) {
                         loginUsername.setError(null);
-                        Intent intent = new Intent(login_regular.this, InfoPage.class);
+                        Intent intent = new Intent(login_regular.this, Parent_After_Login_CreateJoinHouse.class);
                         startActivity(intent);
                         Toast.makeText(login_regular.this,"logged in",Toast.LENGTH_SHORT).show();
                     } else {

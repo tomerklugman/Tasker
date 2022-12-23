@@ -149,6 +149,7 @@ public class MainLoginPage extends AppCompatActivity {
                                 userGettersSetters userGettersSetters = new userGettersSetters(user,pass,status);
                                 reference.child(user).setValue(userGettersSetters);
 
+
                                 //  if(Objects.equals(status, "parent")){
                                 //      reference1 = database.getReference("houses");
                                 //      reference1.child(house).child("1").setValue("");
