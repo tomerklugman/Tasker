@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
+    android:background="@drawable/rsz_parent_kid_background"
     android:orientation="vertical"
     android:gravity="center"
     tools:context=".MainLoginPage">
@@ -116,9 +116,31 @@
                 android:layout_gravity="center"
                 android:textAlignment="center"
                 android:padding="8dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="1dp"
                 android:textColor="@color/black"
                 android:textSize="12sp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="or login with google:"
+                android:gravity="center"
+                android:layout_marginTop="10dp"
+                android:padding="8dp"
+                android:textSize="15sp"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:id="@+id/or"
+                />
+
+            <ImageView
+                android:id="@+id/google_sign_in"
+                android:layout_width="315dp"
+                android:layout_height="80dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="5dp"
+                android:padding="8dp"
+                android:src="@drawable/google_sign_in" />
 
 
 
@@ -129,28 +151,6 @@
 
 
         </androidx.cardview.widget.CardView>
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="or login with google:"
-        android:gravity="center"
-        android:layout_marginTop="1dp"
-        android:padding="8dp"
-        android:textSize="15sp"
-        android:textColor="@color/black"
-        android:textStyle="bold"
-        android:id="@+id/or"
-        />
-
-    <ImageView
-        android:id="@+id/google_sign_in"
-        android:layout_width="304dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="10dp"
-        android:padding="8dp"
-        android:src="@drawable/google_sign_in" />
 
 
 </LinearLayout>
