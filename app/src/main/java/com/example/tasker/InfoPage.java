@@ -84,6 +84,7 @@ public class InfoPage extends AppCompatActivity {
                     statusFromDB = snapshot.child(userGettersSetters.username).child("status").getValue(String.class);
                     houseFromDB = snapshot.child(userGettersSetters.username).child("house").getValue(String.class);
 
+
                     status.setText(statusFromDB);
                     house.setText(houseFromDB);
                 }

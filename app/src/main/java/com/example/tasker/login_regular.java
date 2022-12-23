@@ -99,15 +99,24 @@ public class login_regular extends AppCompatActivity {
                 if (snapshot.exists()) {
                     loginUsername.setError(null);
                     String passwordFromDB = snapshot.child(userUsername).child("password").getValue(String.class);
+                    String statusFromDB = snapshot.child(userUsername).child("status").getValue(String.class);
+                    String houseFromDB = snapshot.child(userUsername).child("house").getValue(String.class);
 
                     if (Objects.equals(passwordFromDB, userPassword)){
                         loginUsername.setError(null);
-                        if(userGettersSetters.status=="parent") {
-                            Intent intent = new Intent(login_regular.this, Parent_After_Login_CreateJoinHouse.class);
-                            startActivity(intent);
-                            Toast.makeText(login_regular.this, "logged in", Toast.LENGTH_SHORT).show();
-                        }else{
-                            Intent intent = new Intent(login_regular.this, Child_After_login_JoinHouse.class);
+
+                        if (houseFromDB==null) {  // if user not in house
+                            if (Objects.equals(statusFromDB, "parent")) { // if user is parent
+                                Intent intent = new Intent(login_regular.this, Parent_After_Login_CreateJoinHouse.class);
+                                startActivity(intent);
+                                Toast.makeText(login_regular.this, "logged in", Toast.LENGTH_SHORT).show();
+                            } else { // else user is child
+                                Intent intent = new Intent(login_regular.this, Child_After_login_JoinHouse.class);
+                                startActivity(intent);
+                                Toast.makeText(login_regular.this, "logged in", Toast.LENGTH_SHORT).show();
+                            }
+                        } else { // user already in house
+                            Intent intent = new Intent(login_regular.this, InfoPage.class);
                             startActivity(intent);
                             Toast.makeText(login_regular.this, "logged in", Toast.LENGTH_SHORT).show();
                         }
