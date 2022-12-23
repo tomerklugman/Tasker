@@ -116,7 +116,7 @@ public class login_regular extends AppCompatActivity {
                                 Toast.makeText(login_regular.this, "logged in", Toast.LENGTH_SHORT).show();
                             }
                         } else { // user already in house
-                            Intent intent = new Intent(login_regular.this, InfoPage.class);
+                            Intent intent = new Intent(login_regular.this, home_bottom_toolbar.class);
                             startActivity(intent);
                             Toast.makeText(login_regular.this, "logged in", Toast.LENGTH_SHORT).show();
                         }

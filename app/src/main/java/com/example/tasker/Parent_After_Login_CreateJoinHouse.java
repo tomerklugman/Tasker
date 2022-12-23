@@ -88,7 +88,7 @@ public class Parent_After_Login_CreateJoinHouse extends AppCompatActivity {
                                     }
                                 });
 
-                                Intent intent = new Intent(Parent_After_Login_CreateJoinHouse.this, InfoPage.class); // change to parent home panel
+                                Intent intent = new Intent(Parent_After_Login_CreateJoinHouse.this, home_bottom_toolbar.class); // change to parent home panel
                                 startActivity(intent);
 
                             } else {
@@ -155,14 +155,21 @@ public class Parent_After_Login_CreateJoinHouse extends AppCompatActivity {
                                     }
                                 });
 
-                                Intent intent = new Intent(Parent_After_Login_CreateJoinHouse.this, InfoPage.class); // change to parent home panel
+                                Intent intent = new Intent(Parent_After_Login_CreateJoinHouse.this, home_bottom_toolbar.class); // change to parent home panel
                                 startActivity(intent);
 
                             } else {
 
-                                HousePassword.setError(null);
-                                HousePassword.setError("incorrect password");
-                                HousePassword.requestFocus();
+                                if(!HouseFromDB){
+                                    HouseNumber.setError(null);
+                                    HouseNumber.setError("no such house");
+                                    HouseNumber.requestFocus();
+                                }else {
+
+                                    HousePassword.setError(null);
+                                    HousePassword.setError("incorrect password");
+                                    HousePassword.requestFocus();
+                                }
 
                             }
                         }

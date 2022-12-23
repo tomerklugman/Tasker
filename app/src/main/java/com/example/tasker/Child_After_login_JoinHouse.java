@@ -80,15 +80,20 @@ public class Child_After_login_JoinHouse extends AppCompatActivity {
                                     }
                                 });
 
-                                Intent intent = new Intent(Child_After_login_JoinHouse.this, InfoPage.class); // change to parent home panel
+                                Intent intent = new Intent(Child_After_login_JoinHouse.this, home_bottom_toolbar.class); // change to parent home panel
                                 startActivity(intent);
 
                             } else {
+                                if(!HouseFromDB){
+                                    HouseNumber.setError(null);
+                                    HouseNumber.setError("no such house");
+                                    HouseNumber.requestFocus();
+                                }else {
 
-                                HousePassword.setError(null);
-                                HousePassword.setError("incorrect password");
-                                HousePassword.requestFocus();
-
+                                    HousePassword.setError(null);
+                                    HousePassword.setError("incorrect password");
+                                    HousePassword.requestFocus();
+                                }
                             }
                         }
                     }
