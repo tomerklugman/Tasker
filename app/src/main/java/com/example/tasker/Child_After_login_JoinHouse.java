@@ -85,9 +85,9 @@ public class Child_After_login_JoinHouse extends AppCompatActivity {
 
                             } else {
 
-                                HouseNumber.setError(null);
-                                HouseNumber.setError("house in use choose other number");
-                                HouseNumber.requestFocus();
+                                HousePassword.setError(null);
+                                HousePassword.setError("incorrect password");
+                                HousePassword.requestFocus();
 
                             }
                         }

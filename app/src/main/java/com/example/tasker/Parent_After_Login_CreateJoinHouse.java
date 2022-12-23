@@ -160,9 +160,9 @@ public class Parent_After_Login_CreateJoinHouse extends AppCompatActivity {
 
                             } else {
 
-                                HouseNumber.setError(null);
-                                HouseNumber.setError("house in use choose other number");
-                                HouseNumber.requestFocus();
+                                HousePassword.setError(null);
+                                HousePassword.setError("incorrect password");
+                                HousePassword.requestFocus();
 
                             }
                         }
