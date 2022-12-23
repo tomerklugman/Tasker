@@ -44,7 +44,6 @@ public class MainLoginPage extends AppCompatActivity {
     //---------------------------------------------regular user auth
 
     EditText signupPassword, signupUsername,signupStatus;
-    // EditText signupHouse;
     Button signupButton;
     TextView loginRedirectText;
 
@@ -116,7 +115,7 @@ public class MainLoginPage extends AppCompatActivity {
         signupUsername = findViewById(R.id.signup_regular_username);
         signupPassword = findViewById(R.id.signup_regular_password);
         signupStatus = findViewById(R.id.auto_complete_txt);
-        //signupHouse = findViewById(R.id.signup_regular_house);
+
 
         signupButton = findViewById(R.id.signup_regular_button);
         loginRedirectText = findViewById(R.id.signup_regular_signIN);
@@ -132,7 +131,7 @@ public class MainLoginPage extends AppCompatActivity {
                 String user = signupUsername.getText().toString().trim();
                 String pass = signupPassword.getText().toString().trim();
                 String status = signupStatus.getText().toString().trim();
-                // String house = signupHouse.getText().toString().trim();
+
 
                 DatabaseReference reference = FirebaseDatabase.getInstance().getReference("users");
                 Query checkUserDatabase = reference.orderByChild("username");
@@ -148,12 +147,6 @@ public class MainLoginPage extends AppCompatActivity {
                             if (!Objects.equals(userFromDB, user)) {
                                 userGettersSetters userGettersSetters = new userGettersSetters(user,pass,status);
                                 reference.child(user).setValue(userGettersSetters);
-
-
-                                //  if(Objects.equals(status, "parent")){
-                                //      reference1 = database.getReference("houses");
-                                //      reference1.child(house).child("1").setValue("");
-                                //   }
 
                                 Toast.makeText(MainLoginPage.this, "you have signed up succesfully", Toast.LENGTH_SHORT).show();
                                 Intent intent = new Intent(MainLoginPage.this, login_regular.class);
