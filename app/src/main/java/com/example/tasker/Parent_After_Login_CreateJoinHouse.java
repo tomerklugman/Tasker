@@ -35,8 +35,6 @@ public class Parent_After_Login_CreateJoinHouse extends AppCompatActivity {
         setContentView(R.layout.activity_parent_after_login_createjoinhouse);
 
 
-        HouseNumber = findViewById(R.id.create_house_number);
-        HousePassword = findViewById(R.id.create_house_password);
 
         CreateButton = findViewById(R.id.create_house_button);
         JoinButton = findViewById(R.id.join_house_button);
@@ -44,6 +42,9 @@ public class Parent_After_Login_CreateJoinHouse extends AppCompatActivity {
         CreateButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                HouseNumber = findViewById(R.id.create_house_number);
+                HousePassword = findViewById(R.id.create_house_password);
 
                 database = FirebaseDatabase.getInstance();
                 reference = database.getReference("houses1");
@@ -66,7 +67,7 @@ public class Parent_After_Login_CreateJoinHouse extends AppCompatActivity {
 
                                 houseGettersSetters houseGettersSetters = new houseGettersSetters(HousePass);
 
-                                reference.child(HouseNum).setValue(HousePass);
+                                reference.child(HouseNum).child("password").setValue(HousePass);
 
                                 Toast.makeText(Parent_After_Login_CreateJoinHouse.this, "you have created house " + HouseNum, Toast.LENGTH_SHORT).show();
 
@@ -113,6 +114,9 @@ public class Parent_After_Login_CreateJoinHouse extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
+                HouseNumber = findViewById(R.id.join_house_number);
+                HousePassword = findViewById(R.id.join_house_password);
+
                 database = FirebaseDatabase.getInstance();
                 reference = database.getReference("houses1");
 
@@ -128,13 +132,13 @@ public class Parent_After_Login_CreateJoinHouse extends AppCompatActivity {
                         if (snapshot.exists()){
                             HouseNumber.setError(null);
                             boolean HouseFromDB = snapshot.hasChild(HouseNum);
-                            String passFromDB = snapshot.child(HouseNum).child("password").getValue(String.class);
+                            String PassFromDB = snapshot.child(HouseNum).child("password").getValue(String.class);
 
 
-                            if (!HouseFromDB && HousePass==passFromDB){
-
+                            if (HouseFromDB && (Objects.equals(PassFromDB, HousePass))){
 
                                 Toast.makeText(Parent_After_Login_CreateJoinHouse.this, "you have joined house " + HouseNum, Toast.LENGTH_SHORT).show();
+
 
                                 DatabaseReference reference1 = FirebaseDatabase.getInstance().getReference("users");
                                 Query checkstatusDatabase = reference1.orderByChild("username").equalTo(userGettersSetters.username);
@@ -157,7 +161,7 @@ public class Parent_After_Login_CreateJoinHouse extends AppCompatActivity {
                             } else {
 
                                 HouseNumber.setError(null);
-                                HouseNumber.setError("invalid house or password");
+                                HouseNumber.setError("house in use choose other number");
                                 HouseNumber.requestFocus();
 
                             }

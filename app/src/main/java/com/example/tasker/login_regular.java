@@ -100,11 +100,17 @@ public class login_regular extends AppCompatActivity {
                     loginUsername.setError(null);
                     String passwordFromDB = snapshot.child(userUsername).child("password").getValue(String.class);
 
-                    if (Objects.equals(passwordFromDB, userPassword)) {
+                    if (Objects.equals(passwordFromDB, userPassword)){
                         loginUsername.setError(null);
-                        Intent intent = new Intent(login_regular.this, Parent_After_Login_CreateJoinHouse.class);
-                        startActivity(intent);
-                        Toast.makeText(login_regular.this,"logged in",Toast.LENGTH_SHORT).show();
+                        if(userGettersSetters.status=="parent") {
+                            Intent intent = new Intent(login_regular.this, Parent_After_Login_CreateJoinHouse.class);
+                            startActivity(intent);
+                            Toast.makeText(login_regular.this, "logged in", Toast.LENGTH_SHORT).show();
+                        }else{
+                            Intent intent = new Intent(login_regular.this, Child_After_login_JoinHouse.class);
+                            startActivity(intent);
+                            Toast.makeText(login_regular.this, "logged in", Toast.LENGTH_SHORT).show();
+                        }
                     } else {
                         loginPassword.setError("invalid input");
                         loginPassword.requestFocus();

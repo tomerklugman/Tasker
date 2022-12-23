@@ -28,9 +28,11 @@ public class InfoPage extends AppCompatActivity {
     TextView name;
     TextView mail;
     TextView status;
+    TextView house;
     Button logout;
 
     String statusFromDB;
+    String houseFromDB;
 
     GoogleSignInOptions gso;
     GoogleSignInClient gsc;
@@ -47,6 +49,7 @@ public class InfoPage extends AppCompatActivity {
         mail=findViewById(R.id.mail);
         //user=findViewById(R.id.password);
         status=findViewById(R.id.status);
+        house=findViewById(R.id.house);
         logout=findViewById(R.id.logout);
 
         gso=new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).requestEmail().build();
@@ -79,8 +82,10 @@ public class InfoPage extends AppCompatActivity {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
                     statusFromDB = snapshot.child(userGettersSetters.username).child("status").getValue(String.class);
+                    houseFromDB = snapshot.child(userGettersSetters.username).child("house").getValue(String.class);
 
                     status.setText(statusFromDB);
+                    house.setText(houseFromDB);
                 }
 
                 @Override
