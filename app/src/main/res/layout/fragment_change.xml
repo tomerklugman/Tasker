@@ -10,7 +10,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="Change"
+        android:text="Requests"
         android:gravity="top|center"
         android:textSize="80sp"
         android:textColor="@color/teal_700"

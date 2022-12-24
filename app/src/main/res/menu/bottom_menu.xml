@@ -8,7 +8,7 @@
 
     <item
         android:id="@+id/tasks"
-        android:title="tasks"
+        android:title="Tasks"
         android:icon="@drawable/ic_baseline_task_24"/>
 
     <item
@@ -18,12 +18,12 @@
 
     <item
         android:id="@+id/change"
-        android:title="change"
+        android:title="Requests"
         android:icon="@drawable/ic_baseline_escalator_warning_24"/>
 
     <item
         android:id="@+id/profile"
-        android:title="profile"
+        android:title="Profile"
         android:icon="@drawable/ic_baseline_person_24"/>
 
 

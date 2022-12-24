@@ -41,18 +41,22 @@ public class home_bottom_toolbar extends AppCompatActivity {
         binding.bottomNavigationView.setOnItemSelectedListener(item -> {
             switch (item.getItemId()){
                 case R.id.home:
+                    item.setChecked(true);
                     replaceFragment(new HomeFragment());
                     break;
 
                 case R.id.tasks:
+                    item.setChecked(true);
                     replaceFragment(new TasksFragment());
                     break;
 
                 case R.id.change:
+                    item.setChecked(true);
                     replaceFragment(new ChangeFragment());
                     break;
 
                 case R.id.profile:
+                    item.setChecked(true);
                     replaceFragment(new ProfileFragment());
                     break;
 
