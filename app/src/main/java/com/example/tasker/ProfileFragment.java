@@ -74,6 +74,15 @@ public class ProfileFragment extends Fragment {
             }
         });
 
+        Button myButton1 = view.findViewById(R.id.joinotherhouse);
+        myButton1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getActivity().finish();
+                startActivity(new Intent(getActivity(), Parent_After_Login_CreateJoinHouse.class));
+            }
+        });
+
 
 /*
         name= getView().findViewById(R.id.name);
