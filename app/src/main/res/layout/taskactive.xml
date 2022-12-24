@@ -16,8 +16,6 @@
 
 
 
-
-
     <TextView
         android:id="@+id/parentName"
         android:layout_width="match_parent"
