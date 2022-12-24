@@ -23,7 +23,7 @@ public class Parent_After_Login_CreateJoinHouse extends AppCompatActivity {
 
     EditText HouseNumber, HousePassword;
     Button CreateButton,JoinButton;
-
+    static String HouseNum;
     FirebaseDatabase database;
     DatabaseReference reference;
 
@@ -49,7 +49,7 @@ public class Parent_After_Login_CreateJoinHouse extends AppCompatActivity {
                 database = FirebaseDatabase.getInstance();
                 reference = database.getReference("houses1");
 
-                String HouseNum =  HouseNumber.getText().toString().trim();
+                HouseNum =  HouseNumber.getText().toString().trim();
                 String HousePass = HousePassword.getText().toString().trim();
 
                 DatabaseReference reference = FirebaseDatabase.getInstance().getReference("houses1");

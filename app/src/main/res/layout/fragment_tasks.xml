@@ -1,20 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/rsz_parent_kid_background"
+    android:orientation="vertical"
+    android:background="@color/cardview_dark_background"
     tools:context=".TasksFragment">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="200dp">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    </LinearLayout>
+
+    <ListView
+        android:id="@+id/tasksLV"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="Tasks"
-        android:gravity="top|center"
-        android:textSize="80sp"
-        android:textColor="@color/teal_700"
-        android:textStyle="bold" />
+        android:layout_marginTop="111dp">
 
-</FrameLayout>
+    </ListView>
+
+
+</RelativeLayout>
 

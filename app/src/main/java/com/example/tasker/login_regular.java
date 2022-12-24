@@ -22,9 +22,13 @@ import java.util.Objects;
 
 public class login_regular extends AppCompatActivity {
 
+    public static String f_url ="https://tasker-c6fa1-default-rtdb.firebaseio.com/";
     EditText loginUsername, loginPassword;
     TextView signupRedirectText;
     Button loginButton;
+    static String val;
+    static String houseFromDB;
+    static String valpass;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,7 +63,7 @@ public class login_regular extends AppCompatActivity {
 
 
     public Boolean validateUsername() {
-        String val = loginUsername.getText().toString();
+        val = loginUsername.getText().toString();
         if (val.isEmpty()) {
             loginUsername.setError("username cant be empty");
             return false;
@@ -71,8 +75,8 @@ public class login_regular extends AppCompatActivity {
     }
 
     public Boolean validatePassword() {
-        String val = loginPassword.getText().toString();
-        if (val.isEmpty()) {
+        valpass = loginPassword.getText().toString();
+        if (valpass.isEmpty()) {
             loginPassword.setError("password cant be empty");
             return false;
         } else {
@@ -100,7 +104,7 @@ public class login_regular extends AppCompatActivity {
                     loginUsername.setError(null);
                     String passwordFromDB = snapshot.child(userUsername).child("password").getValue(String.class);
                     String statusFromDB = snapshot.child(userUsername).child("status").getValue(String.class);
-                    String houseFromDB = snapshot.child(userUsername).child("house").getValue(String.class);
+                    houseFromDB = snapshot.child(userUsername).child("house").getValue(String.class);
 
                     if (Objects.equals(passwordFromDB, userPassword)){
                         loginUsername.setError(null);

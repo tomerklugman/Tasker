@@ -5,11 +5,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 
 import com.example.tasker.databinding.ActivityHomeBottomToolbarBinding;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -41,18 +37,22 @@ public class home_bottom_toolbar extends AppCompatActivity {
         binding.bottomNavigationView.setOnItemSelectedListener(item -> {
             switch (item.getItemId()){
                 case R.id.home:
+                    item.setChecked(true);
                     replaceFragment(new HomeFragment());
                     break;
 
                 case R.id.tasks:
+                    item.setChecked(true);
                     replaceFragment(new TasksFragment());
                     break;
 
                 case R.id.change:
+                    item.setChecked(true);
                     replaceFragment(new ChangeFragment());
                     break;
 
                 case R.id.profile:
+                    item.setChecked(true);
                     replaceFragment(new ProfileFragment());
                     break;
 
@@ -60,7 +60,7 @@ public class home_bottom_toolbar extends AppCompatActivity {
 
             return false;
         });
-        actionButton.setOnClickListener(view ->replaceFragment(new PlusbuttonFragment()));
+        actionButton.setOnClickListener(view ->replaceFragment(new addTaskFragment()));
     }
 
     private void replaceFragment(Fragment fragment){

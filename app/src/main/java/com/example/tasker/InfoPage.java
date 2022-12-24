@@ -32,7 +32,7 @@ public class InfoPage extends AppCompatActivity {
     Button logout;
 
     String statusFromDB;
-    String houseFromDB;
+    static String houseFromDB;
 
     GoogleSignInOptions gso;
     GoogleSignInClient gsc;
