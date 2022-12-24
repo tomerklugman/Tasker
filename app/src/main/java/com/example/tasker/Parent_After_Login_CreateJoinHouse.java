@@ -62,6 +62,8 @@ public class Parent_After_Login_CreateJoinHouse extends AppCompatActivity {
                             HouseNumber.setError(null);
                             boolean HouseFromDB = snapshot.hasChild(HouseNum);
 
+                            userGettersSetters.house=HouseNum;
+
 
                             if (!HouseFromDB){
 
@@ -88,7 +90,7 @@ public class Parent_After_Login_CreateJoinHouse extends AppCompatActivity {
                                     }
                                 });
 
-                                Intent intent = new Intent(Parent_After_Login_CreateJoinHouse.this, home_bottom_toolbar.class); // change to parent home panel
+                                Intent intent = new Intent(Parent_After_Login_CreateJoinHouse.this, home_bottom_toolbar_parent.class); // change to parent home panel
                                 startActivity(intent);
 
                             } else {
@@ -155,7 +157,7 @@ public class Parent_After_Login_CreateJoinHouse extends AppCompatActivity {
                                     }
                                 });
 
-                                Intent intent = new Intent(Parent_After_Login_CreateJoinHouse.this, home_bottom_toolbar.class); // change to parent home panel
+                                Intent intent = new Intent(Parent_After_Login_CreateJoinHouse.this, home_bottom_toolbar_parent.class); // change to parent home panel
                                 startActivity(intent);
 
                             } else {

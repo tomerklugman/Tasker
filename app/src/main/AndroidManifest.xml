@@ -15,6 +15,13 @@
         android:theme="@style/Theme.Tasker"
         tools:targetApi="31">
         <activity
+            android:name=".home_bottom_toolbar_child"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".WelcomePage"
             android:exported="false">
             <meta-data
@@ -22,7 +29,7 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".home_bottom_toolbar"
+            android:name=".home_bottom_toolbar_parent"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"

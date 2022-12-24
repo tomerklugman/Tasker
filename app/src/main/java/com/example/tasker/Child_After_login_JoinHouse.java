@@ -57,6 +57,8 @@ public class Child_After_login_JoinHouse extends AppCompatActivity {
                             boolean HouseFromDB = snapshot.hasChild(HouseNum);
                             String PassFromDB = snapshot.child(HouseNum).child("password").getValue(String.class);
 
+                            userGettersSetters.house=HouseNum;
+
 
 
 
@@ -80,7 +82,7 @@ public class Child_After_login_JoinHouse extends AppCompatActivity {
                                     }
                                 });
 
-                                Intent intent = new Intent(Child_After_login_JoinHouse.this, home_bottom_toolbar.class); // change to parent home panel
+                                Intent intent = new Intent(Child_After_login_JoinHouse.this, home_bottom_toolbar_parent.class); // change to parent home panel
                                 startActivity(intent);
 
                             } else {

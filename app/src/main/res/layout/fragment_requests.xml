@@ -4,17 +4,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/rsz_parent_kid_background"
-    tools:context=".ChangeFragment">
+    tools:context=".RequestsFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recview1"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Requests"
-        android:gravity="top|center"
-        android:textSize="80sp"
-        android:textColor="@color/teal_700"
-        android:textStyle="bold" />
+        android:layout_height="match_parent" />
 
 </FrameLayout>
 

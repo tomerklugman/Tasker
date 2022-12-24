@@ -60,6 +60,9 @@ public class ProfileFragment extends Fragment {
 
         //logout.setOnClickListener(view -> startActivity(new Intent(getActivity(),MainLoginPage.class)));
 
+
+
+
         view = inflater.inflate(R.layout.fragment_profile, container, false);
 
         Button myButton = view.findViewById(R.id.logout);
