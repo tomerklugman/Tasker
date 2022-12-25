@@ -2,7 +2,7 @@ package com.example.tasker;
 
 public class model {
 
-    String name,desc,price,status;
+    String name,desc,price,status,id;
 
     public model() {
     }
@@ -12,6 +12,14 @@ public class model {
         this.desc = desc;
         this.price = price;
         this.status = status;
+    }
+
+    public model(String name, String desc, String price, String status, String id) {
+        this.name = name;
+        this.desc = desc;
+        this.price = price;
+        this.status = status;
+        this.id = id;
     }
 
     public String getName() {
@@ -44,5 +52,13 @@ public class model {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 }

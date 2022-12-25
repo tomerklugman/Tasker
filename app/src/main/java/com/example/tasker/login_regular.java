@@ -103,6 +103,7 @@ public class login_regular extends AppCompatActivity {
                     String houseFromDB = snapshot.child(userUsername).child("house").getValue(String.class);
 
                     userGettersSetters.house=houseFromDB;
+                    userGettersSetters.status=statusFromDB;
 
                     if (Objects.equals(passwordFromDB, userPassword)){
                         loginUsername.setError(null);

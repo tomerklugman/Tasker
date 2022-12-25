@@ -6,6 +6,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
@@ -25,6 +26,15 @@ public class myadapter extends FirebaseRecyclerAdapter<model,myadapter.myviewhol
         holder.desctext.setText(model.getDesc());
         holder.pricetext.setText(model.getPrice());
         holder.statustext.setText(model.getStatus());
+
+
+        holder.nametext.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AppCompatActivity activity= (AppCompatActivity) view.getContext();
+                activity.getSupportFragmentManager().beginTransaction().replace(R.id.frame_layout,new descfragmet(model.getName(),model.getDesc(),model.getPrice(),model.getStatus(),model.getId())).addToBackStack(null).commit();
+            }
+        });
 
 
     }

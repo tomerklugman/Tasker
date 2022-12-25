@@ -140,28 +140,36 @@ public class MainLoginPage extends AppCompatActivity {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
 
-                        if (snapshot.exists()) {
-                            signupUsername.setError(null);
-                            String userFromDB = snapshot.child(user).child("username").getValue(String.class);
 
-                            if (!Objects.equals(userFromDB, user)) {
-                                userGettersSetters userGettersSetters = new userGettersSetters(user,pass,status);
-                                reference.child(user).setValue(userGettersSetters);
+                        if (!user.isEmpty() && !pass.isEmpty()) {
 
-                                Toast.makeText(MainLoginPage.this, "you have signed up succesfully", Toast.LENGTH_SHORT).show();
-                                Intent intent = new Intent(MainLoginPage.this, login_regular.class);
-                                startActivity(intent);
-
-                            } else {
-
+                            if (snapshot.exists()) {
                                 signupUsername.setError(null);
-                                signupUsername.setError("username in use");
-                                signupUsername.requestFocus();
+                                String userFromDB = snapshot.child(user).child("username").getValue(String.class);
 
+                                if (!Objects.equals(userFromDB, user)) {
+                                    userGettersSetters userGettersSetters = new userGettersSetters(user, pass, status);
+                                    reference.child(user).setValue(userGettersSetters);
+
+                                    Toast.makeText(MainLoginPage.this, "you have signed up succesfully", Toast.LENGTH_SHORT).show();
+                                    Intent intent = new Intent(MainLoginPage.this, login_regular.class);
+                                    startActivity(intent);
+
+                                } else {
+
+                                    signupUsername.setError(null);
+                                    signupUsername.setError("username in use");
+                                    signupUsername.requestFocus();
+
+                                }
                             }
+
+
+                        }else {
+                            signupUsername.setError(null);
+                            signupUsername.setError("username or passworrd cant be empty");
+                            signupUsername.requestFocus();
                         }
-
-
                     }
 
                     @Override
