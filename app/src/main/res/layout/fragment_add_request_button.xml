@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/rsz_parent_kid_background"
+    tools:context=".addRequestFragment">
+
+
+
+    <LinearLayout
+        android:layout_marginTop="20dp"
+        android:layout_margin="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        android:padding="24dp"
+        android:background="@drawable/square_for_login"
+        >
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="add request"
+            android:textSize="50sp"
+            android:textColor="@color/teal_700"
+            android:gravity="center"
+            android:textStyle="bold" />
+
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="80dp"
+            android:background="@color/white"
+            android:gravity="center"
+            android:hint="request name"
+            android:textStyle="bold"
+            android:id="@+id/name"
+
+            />
+
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:layout_marginTop="10dp"
+            android:background="@color/white"
+            android:gravity="top"
+            android:hint="request description"
+            android:textStyle="bold"
+            android:id="@+id/textdesc"
+            />
+
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@color/white"
+            android:gravity="center"
+            android:hint="request price"
+            android:textStyle="bold"
+            android:id="@+id/price"
+            />
+
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="80dp"
+            android:text="add"
+            android:textSize="18sp"
+            android:id="@+id/addbutton"
+
+            />
+
+
+
+
+    </LinearLayout>
+
+
+
+</FrameLayout>
+
+
+
+
+
+

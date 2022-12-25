@@ -102,13 +102,15 @@ public class login_regular extends AppCompatActivity {
                     String statusFromDB = snapshot.child(userUsername).child("status").getValue(String.class);
                     String houseFromDB = snapshot.child(userUsername).child("house").getValue(String.class);
 
-                    userGettersSetters.house=houseFromDB;
+
                     userGettersSetters.status=statusFromDB;
+                    userGettersSetters.house=houseFromDB;
 
                     if (Objects.equals(passwordFromDB, userPassword)){
                         loginUsername.setError(null);
 
                         if (houseFromDB==null) {  // if user not in house
+
                             if (Objects.equals(statusFromDB, "parent")) { // if user is parent
                                 Intent intent = new Intent(login_regular.this, Parent_After_Login_CreateJoinHouse.class);
                                 startActivity(intent);

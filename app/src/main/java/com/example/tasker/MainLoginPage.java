@@ -140,7 +140,7 @@ public class MainLoginPage extends AppCompatActivity {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
 
-
+                        userGettersSetters.house=null;
                         if (!user.isEmpty() && !pass.isEmpty()) {
 
                             if (snapshot.exists()) {

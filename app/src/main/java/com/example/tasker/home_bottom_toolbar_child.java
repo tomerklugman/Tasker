@@ -60,7 +60,7 @@ public class home_bottom_toolbar_child extends AppCompatActivity {
 
             return false;
         });
-        actionButton.setOnClickListener(view ->replaceFragment(new PlusbuttonFragment()));
+        actionButton.setOnClickListener(view ->replaceFragment(new addRequestFragment()));
     }
 
     private void replaceFragment(Fragment fragment){

@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/rsz_parent_kid_background"
-    tools:context=".PlusbuttonFragment">
+    tools:context=".addRequestFragment">
 
 
 
@@ -23,13 +23,13 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:text="add task"
-            android:textSize="70sp"
+            android:textSize="50sp"
             android:textColor="@color/teal_700"
             android:gravity="center"
             android:textStyle="bold" />
 
 
-        <com.google.android.material.textfield.TextInputEditText
+        <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="80dp"
@@ -42,7 +42,7 @@
             />
 
 
-        <com.google.android.material.textfield.TextInputEditText
+        <EditText
             android:layout_width="match_parent"
             android:layout_height="150dp"
             android:layout_marginTop="10dp"
@@ -54,13 +54,13 @@
             />
 
 
-        <com.google.android.material.textfield.TextInputEditText
+        <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:background="@color/white"
             android:gravity="center"
-            android:hint="price"
+            android:hint="task price"
             android:textStyle="bold"
             android:id="@+id/price"
             />
@@ -84,4 +84,9 @@
 
 
 </FrameLayout>
+
+
+
+
+
 

@@ -90,7 +90,7 @@ public class Child_After_login_JoinHouse extends AppCompatActivity {
                                     }
                                 });
 
-                                Intent intent = new Intent(Child_After_login_JoinHouse.this, home_bottom_toolbar_parent.class); // change to parent home panel
+                                Intent intent = new Intent(Child_After_login_JoinHouse.this, home_bottom_toolbar_child.class); // change to parent home panel
                                 startActivity(intent);
 
                             } else {
