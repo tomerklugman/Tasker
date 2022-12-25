@@ -74,6 +74,7 @@ public class Parent_After_Login_CreateJoinHouse extends AppCompatActivity {
 
                                 reference.child(HouseNum).child("password").setValue(HousePass);
 
+
                                 Toast.makeText(Parent_After_Login_CreateJoinHouse.this, "you have created house " + HouseNum, Toast.LENGTH_SHORT).show();
 
 
