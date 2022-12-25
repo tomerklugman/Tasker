@@ -68,9 +68,9 @@ public class ProfileFragment extends Fragment {
         mail.setText(userGettersSetters.password);
 
         status.setText(userGettersSetters.status);
-        house.setText(userGettersSetters.house);
+        house.setText("House "+userGettersSetters.house);
 
-        Button myButton = view.findViewById(R.id.logout);
+        TextView myButton = (TextView) view.findViewById(R.id.logout);
         myButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -79,7 +79,7 @@ public class ProfileFragment extends Fragment {
             }
         });
 
-        Button myButton1 = view.findViewById(R.id.joinotherhouse);
+        TextView myButton1 = (TextView) view.findViewById(R.id.joinotherhouse);
         myButton1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

@@ -9,7 +9,7 @@
 
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
-<<<<<<< HEAD
+
 
 
     <string name="select">choose parent or child</string>
@@ -18,10 +18,12 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_welcome_page">WelcomePage</string>
 
-=======
+
     <string name="title_activity_child_window">child_window</string>
     <string name="title_activity_child_feed">child_feed</string>
     <string name="large_text">
+
+
         "Material is the metaphor.\n\n"
 
         "A material metaphor is the unifying theory of a rationalized space and a system of motion."
@@ -111,5 +113,7 @@
         "when a user tries to pick up one of cards.\n\n"
     </string>
     <string name="action_settings">Settings</string>
->>>>>>> 7e09ebb25965db451c699911ffd3e59ff156e740
+
+    <string name="twitterUsername">\@joeytribbiani</string>
+
 </resources>
