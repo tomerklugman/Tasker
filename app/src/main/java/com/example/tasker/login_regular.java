@@ -103,6 +103,7 @@ public class login_regular extends AppCompatActivity {
                     String houseFromDB = snapshot.child(userUsername).child("house").getValue(String.class);
 
                     userGettersSetters.house=houseFromDB;
+                    userGettersSetters.status=statusFromDB;
 
                     if (Objects.equals(passwordFromDB, userPassword)){
                         loginUsername.setError(null);
@@ -118,9 +119,16 @@ public class login_regular extends AppCompatActivity {
                                 Toast.makeText(login_regular.this, "logged in", Toast.LENGTH_SHORT).show();
                             }
                         } else { // user already in house
-                            Intent intent = new Intent(login_regular.this, home_bottom_toolbar.class);
-                            startActivity(intent);
-                            Toast.makeText(login_regular.this, "logged in", Toast.LENGTH_SHORT).show();
+
+                            if(Objects.equals(statusFromDB, "parent")) { // parent home page
+                                Intent intent = new Intent(login_regular.this, home_bottom_toolbar_parent.class);
+                                startActivity(intent);
+                                Toast.makeText(login_regular.this, "logged in", Toast.LENGTH_SHORT).show();
+                            } else { // child home page
+                                Intent intent = new Intent(login_regular.this, home_bottom_toolbar_child.class);
+                                startActivity(intent);
+                                Toast.makeText(login_regular.this, "logged in", Toast.LENGTH_SHORT).show();
+                            }
                         }
                     } else {
                         loginPassword.setError("invalid input");

@@ -63,6 +63,11 @@ public class Parent_After_Login_CreateJoinHouse extends AppCompatActivity {
                             boolean HouseFromDB = snapshot.hasChild(HouseNum);
 
 
+
+                            userGettersSetters.house=HouseNum;
+
+
+
                             if (!HouseFromDB){
 
                                 houseGettersSetters houseGettersSetters = new houseGettersSetters(HousePass);
@@ -80,6 +85,11 @@ public class Parent_After_Login_CreateJoinHouse extends AppCompatActivity {
                                     @Override
                                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                                         reference1.child(userGettersSetters.username).child("house").setValue(HouseNum);
+
+                                        String statusFromDB = snapshot.child(userGettersSetters.username).child("status").getValue(String.class);
+
+                                        userGettersSetters.status=statusFromDB;
+
                                     }
 
                                     @Override
@@ -88,7 +98,7 @@ public class Parent_After_Login_CreateJoinHouse extends AppCompatActivity {
                                     }
                                 });
 
-                                Intent intent = new Intent(Parent_After_Login_CreateJoinHouse.this, home_bottom_toolbar.class); // change to parent home panel
+                                Intent intent = new Intent(Parent_After_Login_CreateJoinHouse.this, home_bottom_toolbar_parent.class); // change to parent home panel
                                 startActivity(intent);
 
                             } else {
@@ -134,6 +144,8 @@ public class Parent_After_Login_CreateJoinHouse extends AppCompatActivity {
                             boolean HouseFromDB = snapshot.hasChild(HouseNum);
                             String PassFromDB = snapshot.child(HouseNum).child("password").getValue(String.class);
 
+                            userGettersSetters.house=HouseNum;
+
 
                             if (HouseFromDB && (Objects.equals(PassFromDB, HousePass))){
 
@@ -147,6 +159,10 @@ public class Parent_After_Login_CreateJoinHouse extends AppCompatActivity {
                                     @Override
                                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                                         reference1.child(userGettersSetters.username).child("house").setValue(HouseNum);
+
+                                        String statusFromDB = snapshot.child(userGettersSetters.username).child("status").getValue(String.class);
+
+                                        userGettersSetters.status=statusFromDB;
                                     }
 
                                     @Override
@@ -155,7 +171,7 @@ public class Parent_After_Login_CreateJoinHouse extends AppCompatActivity {
                                     }
                                 });
 
-                                Intent intent = new Intent(Parent_After_Login_CreateJoinHouse.this, home_bottom_toolbar.class); // change to parent home panel
+                                Intent intent = new Intent(Parent_After_Login_CreateJoinHouse.this, home_bottom_toolbar_parent.class); // change to parent home panel
                                 startActivity(intent);
 
                             } else {

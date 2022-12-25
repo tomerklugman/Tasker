@@ -56,11 +56,19 @@ public class ProfileFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        //logout=getView().findViewById(R.id.name);
-
-        //logout.setOnClickListener(view -> startActivity(new Intent(getActivity(),MainLoginPage.class)));
 
         view = inflater.inflate(R.layout.fragment_profile, container, false);
+
+        name=view.findViewById(R.id.name);
+        mail=view.findViewById(R.id.mail);
+        status=view.findViewById(R.id.status);
+        house=view.findViewById(R.id.house);
+
+        name.setText(userGettersSetters.username);
+        mail.setText(userGettersSetters.password);
+
+        status.setText(userGettersSetters.status);
+        house.setText(userGettersSetters.house);
 
         Button myButton = view.findViewById(R.id.logout);
         myButton.setOnClickListener(new View.OnClickListener() {
@@ -71,94 +79,22 @@ public class ProfileFragment extends Fragment {
             }
         });
 
-
-/*
-        name= getView().findViewById(R.id.name);
-        mail=getView().findViewById(R.id.name);
-        //user=findViewById(R.id.password);
-        status=getView().findViewById(R.id.name);
-        house=getView().findViewById(R.id.name);
-        logout=getView().findViewById(R.id.name);
-
-
-
-
-
-
-         // regular sign in
-
-            name.setText(userGettersSetters.username);
-            mail.setText(userGettersSetters.password);
-
-            DatabaseReference reference = FirebaseDatabase.getInstance().getReference("users");
-            Query checkstatusDatabase = reference.orderByChild("username").equalTo(userGettersSetters.username);
-
-            checkstatusDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
-                @Override
-                public void onDataChange(@NonNull DataSnapshot snapshot) {
-                    statusFromDB = snapshot.child(userGettersSetters.username).child("status").getValue(String.class);
-                    houseFromDB = snapshot.child(userGettersSetters.username).child("house").getValue(String.class);
-
-
-                    status.setText(statusFromDB);
-                    house.setText(houseFromDB);
-                }
-
-                @Override
-                public void onCancelled(@NonNull DatabaseError error) {
-
-                }
-            });
-
-*/
-
-/*
-
-            View rootView = inflater.inflate(R.layout.fragment_profile, container, false);
-            // Inflate the layout for this fragment
-            Button btn = (Button) rootView.findViewById(R.id.logout);
-
-        btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                getActivity().finish();
-                startActivity(new Intent(getActivity(), MainLoginPage.class));
-            }
-        });
-
-            return rootView;
-*/
-
-/*
-        View v = inflater.inflate(R.layout.fragment_profile, container, false);
-
-        Button btn = (Button) v.findViewById(R.id.logout);
-        btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                getActivity().finish();
-                startActivity(new Intent(getActivity(), MainLoginPage.class));
-            }
-        });
-        return v;
-
-*/
-/*
-        logout.setOnClickListener(new View.OnClickListener() {
+        Button myButton1 = view.findViewById(R.id.joinotherhouse);
+        myButton1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                gsc.signOut().addOnCompleteListener(new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        getActivity().finish();
-                        startActivity(new Intent(getActivity(), MainLoginPage.class));
-                    }
-                });
+
+                if (userGettersSetters.status=="parent") {
+                    getActivity().finish();
+                    startActivity(new Intent(getActivity(), Parent_After_Login_CreateJoinHouse.class));
+                }else{
+                    getActivity().finish();
+                    startActivity(new Intent(getActivity(), Child_After_login_JoinHouse.class));
+                }
             }
         });
 
 
-*/
 
         // Inflate the layout for this fragment
         //return inflater.inflate(R.layout.fragment_profile, container, false);

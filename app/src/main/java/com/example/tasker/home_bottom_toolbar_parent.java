@@ -5,17 +5,13 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 
 import com.example.tasker.databinding.ActivityHomeBottomToolbarBinding;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 
-public class home_bottom_toolbar extends AppCompatActivity {
+public class home_bottom_toolbar_parent extends AppCompatActivity {
 
 
 
@@ -52,7 +48,7 @@ public class home_bottom_toolbar extends AppCompatActivity {
 
                 case R.id.change:
                     item.setChecked(true);
-                    replaceFragment(new ChangeFragment());
+                    replaceFragment(new RequestsFragment());
                     break;
 
                 case R.id.profile:
