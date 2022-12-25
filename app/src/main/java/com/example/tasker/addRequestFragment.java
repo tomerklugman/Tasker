@@ -57,10 +57,11 @@ public static int id = 0;
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         if (snapshot.exists()){
-                            model model = new model(name1, desc1, price1,"pending");
-
 
                             String strid=Integer.toString(++id);
+
+                            model model = new model(name1, desc1, price1,"pending",strid,"0");
+
 
                             reference.child(userGettersSetters.house).child("requests").child(strid).setValue(model);
 

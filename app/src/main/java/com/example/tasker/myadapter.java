@@ -12,6 +12,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 
+import java.util.Objects;
+
 public class myadapter extends FirebaseRecyclerAdapter<model, myadapter.myviewholder> {
 
 
@@ -30,7 +32,27 @@ public class myadapter extends FirebaseRecyclerAdapter<model, myadapter.myviewho
             @Override
             public void onClick(View view) {
                 AppCompatActivity activity= (AppCompatActivity) view.getContext();
-                activity.getSupportFragmentManager().beginTransaction().replace(R.id.frame_layout,new descfragmet(model.getName(),model.getDesc(),model.getPrice(),model.getStatus())).addToBackStack(null).commit();
+
+                if(Objects.equals(userGettersSetters.status,"parent" )){ // if parent
+
+                if(Objects.equals(model.task,"1") ){
+
+                    activity.getSupportFragmentManager().beginTransaction().replace(R.id.frame_layout, new descfragmentNoAcceptNoreject(model.getName(), model.getDesc(), model.getPrice(), model.getStatus(), model.getId())).addToBackStack(null).commit();
+
+
+
+                } else { // its a parent request
+                    activity.getSupportFragmentManager().beginTransaction().replace(R.id.frame_layout, new descfragmetAcceptReject(model.getName(), model.getDesc(), model.getPrice(), model.getStatus(), model.getId())).addToBackStack(null).commit();
+
+                }
+
+                }else { if(Objects.equals(model.task,"1") ){// if child
+
+                    activity.getSupportFragmentManager().beginTransaction().replace(R.id.frame_layout, new descfragmentAcceptRejectFinish(model.getName(), model.getDesc(), model.getPrice(), model.getStatus(), model.getId())).addToBackStack(null).commit();
+                }else {
+                    activity.getSupportFragmentManager().beginTransaction().replace(R.id.frame_layout, new descfragmentNoAcceptNoreject(model.getName(), model.getDesc(), model.getPrice(), model.getStatus(), model.getId())).addToBackStack(null).commit();
+                }
+                }
             }
         });
 

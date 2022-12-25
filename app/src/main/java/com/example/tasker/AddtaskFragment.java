@@ -53,12 +53,13 @@ public class AddtaskFragment extends Fragment {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         if (snapshot.exists()){
-                            model model = new model(name1, desc1, price1,"pending");
 
 
-                            String strid=Integer.toString(++id1);
+                            String strid1=Integer.toString(++id1);
 
-                            reference.child(userGettersSetters.house).child("tasks").child(strid).setValue(model);
+                            model model = new model(name1, desc1, price1,"pending",strid1,"1");
+
+                            reference.child(userGettersSetters.house).child("tasks").child(strid1).setValue(model);
 
                         }
                     }

@@ -4,15 +4,15 @@ import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.TextView;
 
 
-public class descfragmet extends Fragment {
+public class descfragmentNoAcceptNoreject extends Fragment {
 
 
     private static final String ARG_PARAM1 = "param1";
@@ -21,24 +21,32 @@ public class descfragmet extends Fragment {
 
     private String mParam1;
     private String mParam2;
-    String name, desc, price, status;
+    String name, desc, price, status, id;
 
-    public descfragmet() {
+    public descfragmentNoAcceptNoreject() {
 
     }
 
-    public descfragmet(String name,String desc,String price,String status) {
+    public descfragmentNoAcceptNoreject(String name,String desc,String price,String status, String id) {
+        this.name=name;
+        this.desc=desc;
+        this.price=price;
+        this.status=status;
+        this.id=id;
+
+    }
+
+    public descfragmentNoAcceptNoreject(String name, String desc, String price, String status) {
         this.name=name;
         this.desc=desc;
         this.price=price;
         this.status=status;
 
-
     }
 
 
-    public static descfragmet newInstance(String param1, String param2) {
-        descfragmet fragment = new descfragmet();
+    public static descfragmetAcceptReject newInstance(String param1, String param2) {
+        descfragmetAcceptReject fragment = new descfragmetAcceptReject();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -59,7 +67,7 @@ public class descfragmet extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        View view= inflater.inflate(R.layout.fragment_descfragmet, container, false);
+        View view= inflater.inflate(R.layout.fragment_descno_accept_noreject, container, false);
 
         TextView nameholder = view.findViewById(R.id.nameholder);
         TextView descholder = view.findViewById(R.id.descholder);
@@ -72,9 +80,14 @@ public class descfragmet extends Fragment {
         statusholder.setText(status);
 
 
-
-
         return view;
+    }
+
+    public void replaceFragment(Fragment someFragment) {
+        FragmentTransaction transaction = getFragmentManager().beginTransaction();
+        transaction.replace(R.id.frame_layout, someFragment);
+        transaction.addToBackStack(null);
+        transaction.commit();
     }
 
     public void onBackPressed(){
