@@ -1,3 +1,7 @@
 <resources>
     <dimen name="fab_margin">48dp</dimen>
+<<<<<<< HEAD
+=======
+    <dimen name="text_margin">48dp</dimen>
+>>>>>>> 7e09ebb25965db451c699911ffd3e59ff156e740
 </resources>
