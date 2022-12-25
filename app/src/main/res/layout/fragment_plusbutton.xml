@@ -6,15 +6,82 @@
     android:background="@drawable/rsz_parent_kid_background"
     tools:context=".PlusbuttonFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+
+
+    <LinearLayout
+        android:layout_marginTop="20dp"
+        android:layout_margin="20dp"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="plusbutton"
-        android:gravity="top|center"
-        android:textSize="80sp"
-        android:textColor="@color/teal_700"
-        android:textStyle="bold" />
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        android:padding="24dp"
+        android:background="@drawable/square_for_login"
+        >
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="add task"
+            android:textSize="70sp"
+            android:textColor="@color/teal_700"
+            android:gravity="center"
+            android:textStyle="bold" />
+
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="80dp"
+            android:background="@color/white"
+            android:gravity="center"
+            android:hint="task name"
+            android:textStyle="bold"
+            android:id="@+id/name"
+
+            />
+
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:layout_marginTop="10dp"
+            android:background="@color/white"
+            android:gravity="top"
+            android:hint="task description"
+            android:textStyle="bold"
+            android:id="@+id/textdesc"
+            />
+
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@color/white"
+            android:gravity="center"
+            android:hint="price"
+            android:textStyle="bold"
+            android:id="@+id/price"
+            />
+
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="80dp"
+            android:text="add"
+            android:textSize="18sp"
+            android:id="@+id/addbutton"
+
+            />
+
+
+
+
+    </LinearLayout>
+
+
 
 </FrameLayout>
 
