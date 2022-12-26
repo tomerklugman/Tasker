@@ -19,6 +19,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
+
 
 public class AddtaskFragment extends Fragment {
 
@@ -37,6 +39,22 @@ public class AddtaskFragment extends Fragment {
         EditText desc = (EditText) view.findViewById(R.id.textdesc);
         EditText price = (EditText) view.findViewById(R.id.price);
 
+        DatabaseReference reference1 = FirebaseDatabase.getInstance().getReference();
+        Query checkHouseDatabase1 = reference1.child("houses").child(userGettersSetters.house).child("tasks").orderByKey().limitToLast(1);
+        checkHouseDatabase1.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for(DataSnapshot ds : snapshot.getChildren()) {
+                    String check = ds.child("id").getValue(String.class);
+                    id1 = Integer.parseInt(check);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
 
         Button b = (Button) view.findViewById(R.id.addbutton);
         b.setOnClickListener(new View.OnClickListener() {
@@ -47,7 +65,7 @@ public class AddtaskFragment extends Fragment {
                 String desc1 = desc.getText().toString().trim();
                 String price1 = price.getText().toString().trim();
 
-                DatabaseReference reference = FirebaseDatabase.getInstance().getReference("houses1");
+                DatabaseReference reference = FirebaseDatabase.getInstance().getReference("houses");
                 Query checkHouseDatabase = reference.orderByKey();
                 checkHouseDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override

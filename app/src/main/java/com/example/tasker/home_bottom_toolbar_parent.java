@@ -28,7 +28,7 @@ public class home_bottom_toolbar_parent extends AppCompatActivity {
         binding = ActivityHomeBottomToolbarBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        replaceFragment(new HomeFragment());
+        replaceFragment(new RequestsFragment());
 
         actionButton = findViewById(R.id.plusbutton);
 
@@ -38,7 +38,7 @@ public class home_bottom_toolbar_parent extends AppCompatActivity {
             switch (item.getItemId()){
                 case R.id.home:
                     item.setChecked(true);
-                    replaceFragment(new HomeFragment());
+                    replaceFragment(new HomeParentFragment());
                     break;
 
                 case R.id.tasks:

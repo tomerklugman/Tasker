@@ -10,6 +10,7 @@
     android:padding="24dp"
     android:background="@drawable/square_for_login"
     tools:context=".descfragmentNoAcceptNoreject"
+    android:backgroundTint="@color/lightorange"
     >
 
     <TextView

@@ -41,12 +41,12 @@ public class Child_After_login_JoinHouse extends AppCompatActivity {
                 HousePassword = findViewById(R.id.join_house_password_child);
 
                 database = FirebaseDatabase.getInstance();
-                reference = database.getReference("houses1");
+                reference = database.getReference("houses");
 
                 String HouseNum =  HouseNumber.getText().toString().trim();
                 String HousePass = HousePassword.getText().toString().trim();
 
-                DatabaseReference reference = FirebaseDatabase.getInstance().getReference("houses1");
+                DatabaseReference reference = FirebaseDatabase.getInstance().getReference("houses");
                 Query checkHouseDatabase = reference.orderByKey();
 
                 checkHouseDatabase.addListenerForSingleValueEvent(new ValueEventListener() {

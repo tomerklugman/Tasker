@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/rsz_parent_kid_background"
+    android:background="@color/lightorange"
     tools:context=".home_bottom_toolbar_child"
     >
 
@@ -42,6 +42,7 @@
         android:src="@drawable/ic_baseline_add_24"
         app:layout_anchor="@id/bottomAppBar"
         app:maxImageSize="40dp"
+        app:backgroundTint="#D6AA55"
         />
 
 

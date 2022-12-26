@@ -3,13 +3,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/rsz_parent_kid_background"
+    android:background="@color/lightorange"
     tools:context=".RequestsFragment">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recview1"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        />
 
 </FrameLayout>
 

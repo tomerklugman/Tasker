@@ -102,13 +102,13 @@ public class descfragmentAcceptRejectFinish extends Fragment {
                 model mod = new model(name, desc, price,status, id);
                 System.out.println(mod.id);
                 if(Objects.equals(userGettersSetters.status,"parent")){
-                    DatabaseReference ref = FirebaseDatabase.getInstance().getReference("houses1").child(userGettersSetters.house).child("tasks").child(mod.getId());
+                    DatabaseReference ref = FirebaseDatabase.getInstance().getReference("houses").child(userGettersSetters.house).child("tasks").child(mod.getId());
                     ref.child("status").setValue(status);
 
-                    DatabaseReference ref1 = FirebaseDatabase.getInstance().getReference("houses1").child(userGettersSetters.house).child("requests").child(mod.getId());
+                    DatabaseReference ref1 = FirebaseDatabase.getInstance().getReference("houses").child(userGettersSetters.house).child("requests").child(mod.getId());
                     ref1.child("status").setValue(status);
 
-                    DatabaseReference reference = FirebaseDatabase.getInstance().getReference("houses1");
+                    DatabaseReference reference = FirebaseDatabase.getInstance().getReference("houses");
                     Query checkHouseDatabase = reference.orderByKey();
                     checkHouseDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
@@ -135,9 +135,9 @@ public class descfragmentAcceptRejectFinish extends Fragment {
                 }else {
 
 
-                    DatabaseReference ref = FirebaseDatabase.getInstance().getReference("houses1").child(userGettersSetters.house).child("tasks").child(mod.getId());
+                    DatabaseReference ref = FirebaseDatabase.getInstance().getReference("houses").child(userGettersSetters.house).child("tasks").child(mod.getId());
                     ref.child("status").setValue(status);
-                    replaceFragment(new RequestsFragment());
+                    replaceFragment(new TasksFragment());
                 }
             }
 
@@ -150,16 +150,16 @@ public class descfragmentAcceptRejectFinish extends Fragment {
                 status = "rejected";
                 model mod = new model(name, desc, price,status, id);
                 if(Objects.equals(userGettersSetters.status,"parent")){
-                    DatabaseReference ref = FirebaseDatabase.getInstance().getReference("houses1").child(userGettersSetters.house).child("tasks").child(mod.getId());
-                    ref.child("status").setValue(status);
+                    DatabaseReference ref1 = FirebaseDatabase.getInstance().getReference("houses").child(userGettersSetters.house).child("tasks").child(mod.getId());
+                    ref1.child("status").setValue(status);
                     replaceFragment(new TasksFragment());
 
                 }else {
 
 
-                    DatabaseReference ref = FirebaseDatabase.getInstance().getReference("houses1").child(userGettersSetters.house).child("requests").child(mod.getId());
-                    ref.child("status").setValue(status);
-                    replaceFragment(new RequestsFragment());
+                    DatabaseReference ref1 = FirebaseDatabase.getInstance().getReference("houses").child(userGettersSetters.house).child("tasks").child(mod.getId());
+                    ref1.child("status").setValue(status);
+                    replaceFragment(new TasksFragment());
                 }
             }
 
@@ -173,9 +173,9 @@ public class descfragmentAcceptRejectFinish extends Fragment {
                 status = "finished";
                 model mod = new model(name, desc, price,status, id);
 
-                    DatabaseReference ref = FirebaseDatabase.getInstance().getReference("houses1").child(userGettersSetters.house).child("tasks").child(mod.getId());
-                    ref.child("status").setValue(status);
-                    replaceFragment(new RequestsFragment());
+                    DatabaseReference ref2 = FirebaseDatabase.getInstance().getReference("houses").child(userGettersSetters.house).child("tasks").child(mod.getId());
+                    ref2.child("status").setValue(status);
+                    replaceFragment(new TasksFragment());
 
             }
         });

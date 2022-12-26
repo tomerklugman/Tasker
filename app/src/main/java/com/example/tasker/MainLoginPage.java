@@ -141,7 +141,7 @@ public class MainLoginPage extends AppCompatActivity {
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
 
                         userGettersSetters.house=null;
-                        if (!user.isEmpty() && !pass.isEmpty()) {
+                        if (!user.isEmpty() && !pass.isEmpty() && !status.isEmpty()) {
 
                             if (snapshot.exists()) {
                                 signupUsername.setError(null);
@@ -167,7 +167,7 @@ public class MainLoginPage extends AppCompatActivity {
 
                         }else {
                             signupUsername.setError(null);
-                            signupUsername.setError("username or passworrd cant be empty");
+                            signupUsername.setError("username or password or status cant be empty");
                             signupUsername.requestFocus();
                         }
                     }

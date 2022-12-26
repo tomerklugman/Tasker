@@ -29,6 +29,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.Objects;
+
 
 public class ProfileFragment extends Fragment {
 
@@ -67,10 +69,14 @@ public class ProfileFragment extends Fragment {
         name.setText(userGettersSetters.username);
         mail.setText(userGettersSetters.password);
 
-        status.setText(userGettersSetters.status);
-        house.setText(userGettersSetters.house);
+        status.setText("Account Type: "+userGettersSetters.status);
 
-        Button myButton = view.findViewById(R.id.logout);
+        house.setText("House: "+userGettersSetters.house);
+
+        TextView myButton = (TextView) view.findViewById(R.id.logout);
+
+
+
         myButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -79,12 +85,13 @@ public class ProfileFragment extends Fragment {
             }
         });
 
-        Button myButton1 = view.findViewById(R.id.joinotherhouse);
+
+        TextView myButton1 = (TextView) view.findViewById(R.id.joinotherhouse);
+
         myButton1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                if (userGettersSetters.status=="parent") {
+                if (Objects.equals(userGettersSetters.status,"parent")) {
                     getActivity().finish();
                     startActivity(new Intent(getActivity(), Parent_After_Login_CreateJoinHouse.class));
                 }else{

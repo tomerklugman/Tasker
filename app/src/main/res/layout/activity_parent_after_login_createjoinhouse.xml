@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/rsz_parent_kid_background"
+    android:background="@color/lightorange"
     android:orientation="vertical"
     android:gravity="center"
     tools:context=".MainLoginPage">
@@ -21,6 +21,7 @@
         android:textColor="@color/black"
         android:textStyle="bold"
         android:id="@+id/wel"
+
         />
 
 
@@ -81,6 +82,7 @@
                 android:id="@+id/create_house_button"
                 android:textSize="18sp"
                 android:layout_marginTop="15dp"
+                app:backgroundTint="#D6AA55"
                 app:cornerRadius = "20dp"/>
 
 
@@ -148,6 +150,7 @@
                 android:id="@+id/join_house_button"
                 android:textSize="18sp"
                 android:layout_marginTop="15dp"
+                app:backgroundTint="#D6AA55"
                 app:cornerRadius = "20dp"/>
 
 

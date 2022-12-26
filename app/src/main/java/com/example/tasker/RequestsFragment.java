@@ -60,7 +60,7 @@ public class RequestsFragment extends Fragment {
 
         FirebaseRecyclerOptions<model> options =
                 new FirebaseRecyclerOptions.Builder<model>()
-                        .setQuery(FirebaseDatabase.getInstance().getReference().child("houses1").child(userGettersSetters.house).child("requests"), model.class)
+                        .setQuery(FirebaseDatabase.getInstance().getReference().child("houses").child(userGettersSetters.house).child("requests"), model.class)
                         .build();
 
         adapter=new myadapter(options);

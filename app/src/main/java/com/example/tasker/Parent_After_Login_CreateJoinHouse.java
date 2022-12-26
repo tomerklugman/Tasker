@@ -47,12 +47,12 @@ public class Parent_After_Login_CreateJoinHouse extends AppCompatActivity {
                 HousePassword = findViewById(R.id.create_house_password);
 
                 database = FirebaseDatabase.getInstance();
-                reference = database.getReference("houses1");
+                reference = database.getReference("houses");
 
                 String HouseNum =  HouseNumber.getText().toString().trim();
                 String HousePass = HousePassword.getText().toString().trim();
 
-                DatabaseReference reference = FirebaseDatabase.getInstance().getReference("houses1");
+                DatabaseReference reference = FirebaseDatabase.getInstance().getReference("houses");
                 Query checkHouseDatabase = reference.orderByKey();
 
                 checkHouseDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -129,12 +129,12 @@ public class Parent_After_Login_CreateJoinHouse extends AppCompatActivity {
                 HousePassword = findViewById(R.id.join_house_password);
 
                 database = FirebaseDatabase.getInstance();
-                reference = database.getReference("houses1");
+                reference = database.getReference("houses");
 
                 String HouseNum =  HouseNumber.getText().toString().trim();
                 String HousePass = HousePassword.getText().toString().trim();
 
-                DatabaseReference reference = FirebaseDatabase.getInstance().getReference("houses1");
+                DatabaseReference reference = FirebaseDatabase.getInstance().getReference("houses");
                 Query checkHouseDatabase = reference.orderByKey();
 
                 checkHouseDatabase.addListenerForSingleValueEvent(new ValueEventListener() {

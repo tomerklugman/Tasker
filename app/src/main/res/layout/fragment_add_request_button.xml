@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/rsz_parent_kid_background"
+    android:background="@color/lightorange"
     tools:context=".addRequestFragment">
 
 
@@ -22,11 +22,12 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="add request"
+            android:text="Add Request"
             android:textSize="50sp"
             android:textColor="@color/teal_700"
             android:gravity="center"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            />
 
 
         <EditText
@@ -44,7 +45,7 @@
 
         <EditText
             android:layout_width="match_parent"
-            android:layout_height="150dp"
+            android:layout_height="100dp"
             android:layout_marginTop="10dp"
             android:background="@color/white"
             android:gravity="top"
@@ -73,6 +74,8 @@
             android:text="add"
             android:textSize="18sp"
             android:id="@+id/addbutton"
+            android:backgroundTint="#D6AA55"
+
 
             />
 
