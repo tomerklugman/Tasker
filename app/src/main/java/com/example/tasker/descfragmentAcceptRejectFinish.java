@@ -1,5 +1,6 @@
 package com.example.tasker;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -7,11 +8,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.provider.CalendarContract;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -20,6 +23,10 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.Objects;
 
 
@@ -97,16 +104,16 @@ public class descfragmentAcceptRejectFinish extends Fragment {
         accepted.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // Do something when the button is clicked.
+
                 status = "accepted";
                 model mod = new model(name, desc, price,status, id);
                 System.out.println(mod.id);
                 if(Objects.equals(userGettersSetters.status,"parent")){
                     DatabaseReference ref = FirebaseDatabase.getInstance().getReference("houses").child(userGettersSetters.house).child("tasks").child(mod.getId());
-                    ref.child("status").setValue(status);
+                    ref.child("status").setValue(status); // status accepted for task
 
                     DatabaseReference ref1 = FirebaseDatabase.getInstance().getReference("houses").child(userGettersSetters.house).child("requests").child(mod.getId());
-                    ref1.child("status").setValue(status);
+                    ref1.child("status").setValue(status); // status accepted for request
 
                     DatabaseReference reference = FirebaseDatabase.getInstance().getReference("houses");
                     Query checkHouseDatabase = reference.orderByKey();
@@ -132,12 +139,23 @@ public class descfragmentAcceptRejectFinish extends Fragment {
                     });
                     replaceFragment(new TasksFragment());
 
-                }else {
+                }else { // child clicked accept then add task to calendar
 
 
                     DatabaseReference ref = FirebaseDatabase.getInstance().getReference("houses").child(userGettersSetters.house).child("tasks").child(mod.getId());
                     ref.child("status").setValue(status);
-                    replaceFragment(new TasksFragment());
+
+                    Calendar cal = Calendar.getInstance();
+
+                    Intent intent = new Intent(Intent.ACTION_EDIT);
+
+                    intent.setData(CalendarContract.Events.CONTENT_URI);
+                    intent.putExtra(CalendarContract.Events.TITLE,mod.getName());
+                    intent.putExtra(CalendarContract.Events.DESCRIPTION,mod.getDesc());
+
+                    startActivity(intent);
+
+                    //replaceFragment(new TasksFragment());
                 }
             }
 
@@ -175,6 +193,12 @@ public class descfragmentAcceptRejectFinish extends Fragment {
 
                     DatabaseReference ref2 = FirebaseDatabase.getInstance().getReference("houses").child(userGettersSetters.house).child("tasks").child(mod.getId());
                     ref2.child("status").setValue(status);
+
+                DateFormat df = new SimpleDateFormat("d");
+                String now = df.format(new Date());
+
+                    ref2.child("finishDay").setValue(now);
+
                     replaceFragment(new TasksFragment());
 
             }

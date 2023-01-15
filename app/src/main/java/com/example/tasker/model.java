@@ -1,8 +1,15 @@
 package com.example.tasker;
 
 public class model {
+    public String getUser() {
+        return user;
+    }
 
-    String name,desc,price,status,id,task;
+    public void setUser(String user) {
+        this.user = user;
+    }
+
+    String name,desc,price,status,id,task,user;
 
     public String getTask() {
         return task;
@@ -36,6 +43,17 @@ public class model {
         this.status = status;
         this.id = id;
         this.task = task;
+
+    }
+
+    public model(String name, String desc, String price, String status, String id,String task,String user) {
+        this.name = name;
+        this.desc = desc;
+        this.price = price;
+        this.status = status;
+        this.id = id;
+        this.task = task;
+        this.user = user;
 
     }
 

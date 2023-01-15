@@ -30,7 +30,7 @@
 
             android:layout_marginLeft="20dp"
             android:layout_marginTop="200dp"
-            android:text="Welcome Child,\n\n This is your home panel. \n \n Functions available: \n\n 1. Add request to parent\n 2. Monitor tasks status\n 3. Monitor requests status\n 4. Accept tasks from parent\n 5. Joining other house in profile"
+            android:text="Welcome Child,\n\n This is your home panel. \n \n Functions available: \n\n 1. Add request to parent\n 2. Monitor tasks status\n 3. Monitor requests status\n 4. Accept tasks from parent\n 5. Joining other house in profile \n 6. Adding task to calendar \n 7. Watching monthly earned \n 8. Tasks monthly graph"
             android:textColor="@color/black"
             android:textSize="20dp"
             android:textStyle="bold" />

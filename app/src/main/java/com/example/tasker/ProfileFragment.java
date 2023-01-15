@@ -38,6 +38,7 @@ public class ProfileFragment extends Fragment {
     TextView mail;
     TextView status;
     TextView house;
+    TextView sum;
     Button logout;
 
     String statusFromDB;
@@ -50,6 +51,9 @@ public class ProfileFragment extends Fragment {
     DatabaseReference reference;
 
     View view;
+
+    public static int id4=0;
+    public static int sum1=0;
 
 
 
@@ -65,6 +69,7 @@ public class ProfileFragment extends Fragment {
         mail=view.findViewById(R.id.mail);
         status=view.findViewById(R.id.status);
         house=view.findViewById(R.id.house);
+        sum=view.findViewById(R.id.sum);
 
         name.setText(userGettersSetters.username);
         mail.setText(userGettersSetters.password);
@@ -72,6 +77,28 @@ public class ProfileFragment extends Fragment {
         status.setText("Account Type: "+userGettersSetters.status);
 
         house.setText("House: "+userGettersSetters.house);
+
+
+        DatabaseReference reference1 = FirebaseDatabase.getInstance().getReference();
+        Query checkHouseDatabase1 = reference1.child("houses").child(userGettersSetters.house).child("tasks").orderByKey();
+        checkHouseDatabase1.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for(DataSnapshot ds : snapshot.getChildren()) {
+                    String check = ds.child("price").getValue(String.class);
+                    id4 = Integer.parseInt(check);
+                    sum1=sum1+id4;
+                    sum.setText("Monthly Sum: "+sum1);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+
 
         TextView myButton = (TextView) view.findViewById(R.id.logout);
 
@@ -98,6 +125,14 @@ public class ProfileFragment extends Fragment {
                     getActivity().finish();
                     startActivity(new Intent(getActivity(), Child_After_login_JoinHouse.class));
                 }
+            }
+        });
+        TextView myButton2 = (TextView) view.findViewById(R.id.tasksgraph);
+        myButton2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getActivity().finish();
+                startActivity(new Intent(getActivity(), MonthlyGraph.class));
             }
         });
 

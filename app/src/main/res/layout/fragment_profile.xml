@@ -214,13 +214,38 @@
 
             </LinearLayout>
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/sum"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/headings"
+                    android:textSize="23sp" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="15dp"
+                    android:background="@color/grey" />
+
+
+            </LinearLayout>
+
+
+
+
+
 
             <LinearLayout
                 android:layout_width="229dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="60dp"
                 android:layout_marginBottom="10sp"
-                android:layout_marginTop="100dp"
+                android:layout_marginTop="90dp"
                 android:background="@color/grey"
                 android:orientation="vertical">
 
@@ -250,6 +275,8 @@
                 android:layout_width="229dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="60dp"
+                android:layout_marginBottom="10sp"
+                android:layout_marginTop="5dp"
                 android:background="@color/darkorange"
                 android:orientation="vertical">
 
@@ -257,7 +284,7 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="4dp"
+                    android:layout_marginTop="5dp"
                     android:orientation="vertical">
 
                     <TextView
@@ -270,7 +297,39 @@
                         android:textSize="24sp" />
 
 
+
                 </LinearLayout>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="229dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="60dp"
+                android:background="@color/darkorange"
+                android:orientation="vertical">
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tasksgraph"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:clickable="true"
+                        android:text="TASKS GRAPH"
+                        android:textAlignment="center"
+                        android:textColor="@color/headings"
+                        android:textSize="24sp" />
+
+
+                </LinearLayout>
+
 
             </LinearLayout>
 

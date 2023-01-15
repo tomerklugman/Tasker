@@ -1,5 +1,6 @@
 package com.example.tasker;
 
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,12 +29,31 @@ public class myadapter extends FirebaseRecyclerAdapter<model, myadapter.myviewho
         holder.pricetext.setText(model.getPrice());
         holder.statustext.setText(model.getStatus());
 
+        if (Objects.equals(model.getStatus(),"pending")){
+            holder.statustext.setTextColor(Color.BLUE);
+        }
+
+        if (Objects.equals(model.getStatus(),"accepted")){
+            holder.statustext.setTextColor(Color.GREEN);
+        }
+
+        if (Objects.equals(model.getStatus(),"rejected")){
+            holder.statustext.setTextColor(Color.RED);
+        }
+
+        if (Objects.equals(model.getStatus(),"finished")){
+            holder.statustext.setTextColor(Color.GRAY);
+        }
+
+
+
         holder.nametext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 AppCompatActivity activity= (AppCompatActivity) view.getContext();
 
                 if(Objects.equals(userGettersSetters.status,"parent" )){ // if parent
+
 
                 if(Objects.equals(model.task,"1") ){
 
@@ -42,14 +62,22 @@ public class myadapter extends FirebaseRecyclerAdapter<model, myadapter.myviewho
 
 
                 } else { // its a parent request
-                    activity.getSupportFragmentManager().beginTransaction().replace(R.id.frame_layout, new descfragmetAcceptReject(model.getName(), model.getDesc(), model.getPrice(), model.getStatus(), model.getId())).addToBackStack(null).commit();
 
+                    if (Objects.equals(model.task,"0") && (Objects.equals(model.status,"accepted") || Objects.equals(model.status,"rejected"))){ // parent accepted request or rejected -- saved as history
+                        activity.getSupportFragmentManager().beginTransaction().replace(R.id.frame_layout, new descfragmentNoAcceptNoreject(model.getName(), model.getDesc(), model.getPrice(), model.getStatus(), model.getId())).addToBackStack(null).commit();
+                    } else { // parent pending for accept or reject
+                        activity.getSupportFragmentManager().beginTransaction().replace(R.id.frame_layout, new descfragmetAcceptReject(model.getName(), model.getDesc(), model.getPrice(), model.getStatus(), model.getId())).addToBackStack(null).commit();
+                    }
                 }
 
-                }else { if(Objects.equals(model.task,"1") ){// if child
-
-                    activity.getSupportFragmentManager().beginTransaction().replace(R.id.frame_layout, new descfragmentAcceptRejectFinish(model.getName(), model.getDesc(), model.getPrice(), model.getStatus(), model.getId())).addToBackStack(null).commit();
-                }else {
+                }else { if(Objects.equals(model.task,"1") ){ // if child
+                    //child tasks
+                    if (Objects.equals(model.task,"1") && (Objects.equals(model.status,"finished") || Objects.equals(model.status,"rejected"))){ // child finished or rejected task
+                        activity.getSupportFragmentManager().beginTransaction().replace(R.id.frame_layout, new descfragmentNoAcceptNoreject(model.getName(), model.getDesc(), model.getPrice(), model.getStatus(), model.getId())).addToBackStack(null).commit();
+                    } else { // child accepted task
+                        activity.getSupportFragmentManager().beginTransaction().replace(R.id.frame_layout, new descfragmentAcceptRejectFinish(model.getName(), model.getDesc(), model.getPrice(), model.getStatus(), model.getId())).addToBackStack(null).commit();
+                    }
+                }else { // child requests - can only look as history
                     activity.getSupportFragmentManager().beginTransaction().replace(R.id.frame_layout, new descfragmentNoAcceptNoreject(model.getName(), model.getDesc(), model.getPrice(), model.getStatus(), model.getId())).addToBackStack(null).commit();
                 }
                 }
@@ -77,6 +105,10 @@ public class myadapter extends FirebaseRecyclerAdapter<model, myadapter.myviewho
             desctext=itemView.findViewById(R.id.desctext);
             pricetext=itemView.findViewById(R.id.pricetext);
             statustext=itemView.findViewById(R.id.statustext);
+
+
+
+
 
         }
     }

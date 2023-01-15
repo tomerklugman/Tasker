@@ -1,5 +1,6 @@
 package com.example.tasker;
 
+import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -78,6 +79,8 @@ public class descfragmentNoAcceptNoreject extends Fragment {
         descholder.setText(desc);
         priceholder.setText(price);
         statusholder.setText(status);
+
+
 
 
         return view;
