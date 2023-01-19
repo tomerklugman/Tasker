@@ -149,6 +149,8 @@ public class descfragmentAcceptRejectFinish extends Fragment {
                     ref.child("status").setValue(status);
 
 
+
+
                     Intent intent = new Intent(Intent.ACTION_EDIT);
                     intent.setData(CalendarContract.Events.CONTENT_URI);
                     intent.putExtra(CalendarContract.Events.TITLE,mod.getName());
@@ -156,8 +158,11 @@ public class descfragmentAcceptRejectFinish extends Fragment {
 
                     startActivity(intent);
 
-                    //replaceFragment(new TasksFragment());
+
+
+
                 }
+
             }
 
         });

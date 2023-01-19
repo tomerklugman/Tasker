@@ -15,6 +15,13 @@
         android:theme="@style/Theme.Tasker"
         tools:targetApi="31">
         <activity
+            android:name=".loginSignUp.GoogleChildParentPick"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".ui.SpalshScreen"
             android:exported="true"
             android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar">
@@ -23,6 +30,7 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
@@ -86,7 +94,6 @@
         <activity
             android:name=".loginSignUp.MainLoginPage"
             android:exported="false">
-
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />

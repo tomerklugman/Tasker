@@ -21,10 +21,10 @@ import com.firebase.ui.database.FirebaseRecyclerOptions;
 
 import java.util.Objects;
 
-public class fragmentsAdapater extends FirebaseRecyclerAdapter<taskRegGettersSetters, fragmentsAdapater.myviewholder> {
+public class fragmentsAdapter extends FirebaseRecyclerAdapter<taskRegGettersSetters, fragmentsAdapter.myviewholder> {
 
 
-    public fragmentsAdapater(@NonNull FirebaseRecyclerOptions<taskRegGettersSetters> options) {
+    public fragmentsAdapter(@NonNull FirebaseRecyclerOptions<taskRegGettersSetters> options) {
         super(options);
     }
 

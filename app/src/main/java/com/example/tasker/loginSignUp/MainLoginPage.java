@@ -220,7 +220,7 @@ public class MainLoginPage extends AppCompatActivity {
 
                 task.getResult(ApiException.class);
                 finish();
-                Intent intent = new Intent(getApplicationContext(), InfoPage.class);
+                Intent intent = new Intent(getApplicationContext(), GoogleChildParentPick.class);
                 startActivity(intent);
 
             } catch (ApiException e) {

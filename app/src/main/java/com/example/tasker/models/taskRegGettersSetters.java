@@ -9,7 +9,7 @@ public class taskRegGettersSetters {
         this.user = user;
     }
 
-    public static String name,desc,price,status,id,task,user;
+    public  String name,desc,price,status,id,task,user;
 
     public String getTask() {
         return task;

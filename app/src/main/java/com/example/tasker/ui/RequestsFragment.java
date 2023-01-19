@@ -13,7 +13,7 @@ import android.view.ViewGroup;
 import com.example.tasker.R;
 import com.example.tasker.models.taskRegGettersSetters;
 import com.example.tasker.models.userGettersSetters;
-import com.example.tasker.utils.fragmentsAdapater;
+import com.example.tasker.utils.fragmentsAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -28,7 +28,7 @@ public class RequestsFragment extends Fragment {
     private String mParam2;
 
     RecyclerView recview1;
-    fragmentsAdapater adapter;
+    fragmentsAdapter adapter;
 
     public RequestsFragment() {
 
@@ -67,7 +67,7 @@ public class RequestsFragment extends Fragment {
                         .setQuery(FirebaseDatabase.getInstance().getReference().child("houses").child(userGettersSetters.house).child("requests"), taskRegGettersSetters.class)
                         .build();
 
-        adapter=new fragmentsAdapater(options);
+        adapter=new fragmentsAdapter(options);
         recview1.setAdapter(adapter);
 
         return view;
