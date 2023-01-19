@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/lightorange"
-    tools:context=".home_bottom_toolbar_child"
+    tools:context=".ui.home_bottom_toolbar_child"
     >
 
     <FrameLayout

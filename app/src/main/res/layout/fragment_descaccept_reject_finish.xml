@@ -10,7 +10,7 @@
     android:padding="24dp"
     android:background="@drawable/square_for_login"
     android:backgroundTint="@color/lightorange"
-    tools:context=".descfragmentAcceptRejectFinish"
+    tools:context=".ui.descfragmentAcceptRejectFinish"
     >
 
     <TextView

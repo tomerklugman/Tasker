@@ -7,7 +7,7 @@
     android:background="@drawable/rsz_parent_kid_background"
     android:orientation="vertical"
     android:gravity="center"
-    tools:context=".WelcomePage">
+    tools:context=".ui.WelcomePage">
 
 
     <TextView

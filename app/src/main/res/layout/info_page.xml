@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/rsz_parent_kid_background"
-    tools:context=".InfoPage">
+    tools:context=".ui.InfoPage">
 
     <TextView
         android:layout_width="match_parent"
