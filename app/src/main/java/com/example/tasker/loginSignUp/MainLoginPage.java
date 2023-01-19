@@ -19,6 +19,8 @@ import android.widget.Toast;
 import com.example.tasker.R;
 import com.example.tasker.models.userGettersSetters;
 import com.example.tasker.ui.InfoPage;
+import com.example.tasker.ui.home_bottom_toolbar_child;
+import com.example.tasker.ui.home_bottom_toolbar_parent;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -206,26 +208,63 @@ public class MainLoginPage extends AppCompatActivity {
         if (requestCode == 100) {
             Task<GoogleSignInAccount> task;
             task = GoogleSignIn.getSignedInAccountFromIntent(data);
-            try {
-
-                database = FirebaseDatabase.getInstance();
-                reference = database.getReference("users");
 
 
                 String user = task.getResult().getDisplayName();
                 String pass = task.getResult().getEmail();
 
-                userGettersSetters userGettersSetters = new userGettersSetters(user,pass);
-                reference.child(user).setValue(userGettersSetters);
 
-                task.getResult(ApiException.class);
-                finish();
-                Intent intent = new Intent(getApplicationContext(), GoogleChildParentPick.class);
-                startActivity(intent);
 
-            } catch (ApiException e) {
-                Toast.makeText(this, "Error", Toast.LENGTH_SHORT).show();
-            }
+                DatabaseReference reference = FirebaseDatabase.getInstance().getReference("users");
+                Query checkUserDatabase = reference.orderByChild("username");
+
+                checkUserDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                        System.out.println(user);
+                        String statusFromDB = snapshot.child(user).child("status").getValue(String.class);
+                        String houseFromDB = snapshot.child(user).child("house").getValue(String.class);
+
+                        System.out.println(statusFromDB);
+
+                        if (Objects.equals(statusFromDB,null)) {
+                            userGettersSetters userGettersSetters = new userGettersSetters(user,pass);
+                            reference.child(user).setValue(userGettersSetters);
+
+                           // task.getResult(ApiException.class);
+                            finish();
+                            Intent intent = new Intent(getApplicationContext(), GoogleChildParentPick.class);
+                            startActivity(intent);
+                        } else {
+                            userGettersSetters.house=houseFromDB;
+                            if (Objects.equals(statusFromDB, "parent")) {
+
+                                Intent intent = new Intent(getApplicationContext(), home_bottom_toolbar_parent.class);
+                                startActivity(intent);
+
+                            } else {
+                                Intent intent = new Intent(getApplicationContext(), home_bottom_toolbar_child.class);
+                                startActivity(intent);
+                            }
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
+
+
+
+
+
+
+
+
+
+
 
         }
 //---------------------------------------------google auth

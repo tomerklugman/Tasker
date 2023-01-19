@@ -84,11 +84,11 @@ public class GoogleChildParentPick extends AppCompatActivity {
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
 
                         String userFromDB = snapshot.child(userGettersSetters.username).child("username").getValue(String.class);
-
+                        String houseFromDB = snapshot.child(userGettersSetters.username).child("house").getValue(String.class);
 
                         reference.child(userFromDB).child("status").setValue(status);
 
-                        if (userGettersSetters.house==null) { // user not in house
+                        if (Objects.equals(houseFromDB,null) ) { // user not in house
 
                             if (Objects.equals(status, "parent")) {
 
