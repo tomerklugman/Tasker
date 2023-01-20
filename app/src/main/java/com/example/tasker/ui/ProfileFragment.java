@@ -91,12 +91,16 @@ public class ProfileFragment extends Fragment {
                 for(DataSnapshot ds : snapshot.getChildren()) {
                     if (Objects.equals(ds.child("status").getValue(String.class),"finished")) {
                         String check = ds.child("price").getValue(String.class);
-                        id4 = Integer.parseInt(check);
-                        sum1 = sum1 + id4;
+                        if (check.matches("\\d+")) {
+                            id4 = Integer.parseInt(check);
+                            sum1 = sum1 + id4;
+                        }
 
                         String check1 = ds.child("finishDay").getValue(String.class);
-                        int id5 = Integer.parseInt(check1);
-                        DayGraph[id5] = DayGraph[id5] + 1;
+                        if (check1.matches("\\d+")) {
+                            int id5 = Integer.parseInt(check1);
+                            DayGraph[id5] = DayGraph[id5] + 1;
+                        }
 
                     }
                 }
