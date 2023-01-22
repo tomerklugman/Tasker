@@ -7,7 +7,7 @@
     android:background="@color/lightorange"
     android:orientation="vertical"
     android:gravity="center"
-    tools:context=".loginSignUp.login_regular">
+    tools:context=".ui.loginSignUp.login_regular">
 
 
     <TextView

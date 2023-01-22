@@ -104,11 +104,11 @@ public class descfragmetAcceptReject extends Fragment {
                 taskRegGettersSetters mod = new taskRegGettersSetters(name, desc, price,status, id);
                 System.out.println(mod.id);
                 if(Objects.equals(userGettersSetters.status,"parent")){
-                    DatabaseReference ref = FirebaseDatabase.getInstance().getReference("houses").child(userGettersSetters.house).child("tasks").child(mod.getId());
-                    ref.child("status").setValue(status);
+                  //  DatabaseReference ref = FirebaseDatabase.getInstance().getReference("houses").child(userGettersSetters.house).child("tasks").child(mod.getId());
+                   // ref.child("status").setValue(status);
 
-                    DatabaseReference ref1 = FirebaseDatabase.getInstance().getReference("houses").child(userGettersSetters.house).child("requests").child(mod.getId());
-                    ref1.child("status").setValue(status);
+                   DatabaseReference ref1 = FirebaseDatabase.getInstance().getReference("houses").child(userGettersSetters.house).child("requests").child(mod.getId());
+                   ref1.child("status").setValue(status);
 
                     DatabaseReference reference = FirebaseDatabase.getInstance().getReference("houses");
                     Query checkHouseDatabase = reference.orderByKey();
@@ -117,12 +117,31 @@ public class descfragmetAcceptReject extends Fragment {
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
                             if (snapshot.exists()){
 
-                                String strid=Integer.toString(++addRequestFragment.id);
+                                DatabaseReference reference1 = FirebaseDatabase.getInstance().getReference();
+                                Query checkHouseDatabase1 = reference1.child("houses").child(userGettersSetters.house).child("tasks").orderByKey().limitToLast(1);
+                                checkHouseDatabase1.addListenerForSingleValueEvent(new ValueEventListener() {
+                                    @Override
+                                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                        for(DataSnapshot ds : snapshot.getChildren()) {
+                                            String check = ds.child("id").getValue(String.class);
+                                            int id1 = Integer.parseInt(check);
 
-                                taskRegGettersSetters taskRegGettersSetters = new taskRegGettersSetters(mod.getName(), mod.getDesc(), mod.getPrice(), mod.getStatus(),strid,"1");
+                                            String strid=Integer.toString(++id1);
+
+                                            taskRegGettersSetters taskRegGettersSetters = new taskRegGettersSetters(mod.getName(), mod.getDesc(), mod.getPrice(), mod.getStatus(),strid,"1");
 
 
-                                reference.child(userGettersSetters.house).child("tasks").child(strid).setValue(taskRegGettersSetters);
+                                            reference.child(userGettersSetters.house).child("tasks").child(strid).setValue(taskRegGettersSetters);
+                                        }
+                                    }
+
+                                    @Override
+                                    public void onCancelled(@NonNull DatabaseError error) {
+
+                                    }
+                                });
+
+
 
                             }
                         }

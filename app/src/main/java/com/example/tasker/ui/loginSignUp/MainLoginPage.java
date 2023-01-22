@@ -1,4 +1,4 @@
-package com.example.tasker.loginSignUp;
+package com.example.tasker.ui.loginSignUp;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -18,14 +18,12 @@ import android.widget.Toast;
 
 import com.example.tasker.R;
 import com.example.tasker.models.userGettersSetters;
-import com.example.tasker.ui.InfoPage;
 import com.example.tasker.ui.home_bottom_toolbar_child;
 import com.example.tasker.ui.home_bottom_toolbar_parent;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
-import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;

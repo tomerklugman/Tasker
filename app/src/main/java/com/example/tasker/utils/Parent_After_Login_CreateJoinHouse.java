@@ -1,4 +1,4 @@
-package com.example.tasker.loginSignUp;
+package com.example.tasker.utils;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;

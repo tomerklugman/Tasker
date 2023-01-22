@@ -1,4 +1,4 @@
-package com.example.tasker.loginSignUp;
+package com.example.tasker.ui.loginSignUp;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -17,6 +17,8 @@ import com.example.tasker.R;
 import com.example.tasker.models.userGettersSetters;
 import com.example.tasker.ui.home_bottom_toolbar_child;
 import com.example.tasker.ui.home_bottom_toolbar_parent;
+import com.example.tasker.utils.Child_After_login_JoinHouse;
+import com.example.tasker.utils.Parent_After_Login_CreateJoinHouse;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;

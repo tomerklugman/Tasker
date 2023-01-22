@@ -26,7 +26,7 @@ import com.google.firebase.database.ValueEventListener;
 public class AddtaskFragment extends Fragment {
 
 
-    public static int id1 = 0;
+    public static int id1;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,

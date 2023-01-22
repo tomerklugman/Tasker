@@ -26,7 +26,7 @@ import com.google.firebase.database.ValueEventListener;
 public class addRequestFragment extends Fragment {
 
 
-    public static int id = 0;
+    public static int id;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,

@@ -15,11 +15,10 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.tasker.R;
-import com.example.tasker.loginSignUp.Child_After_login_JoinHouse;
-import com.example.tasker.loginSignUp.Parent_After_Login_CreateJoinHouse;
-import com.example.tasker.loginSignUp.login_regular;
+import com.example.tasker.utils.Child_After_login_JoinHouse;
+import com.example.tasker.utils.Parent_After_Login_CreateJoinHouse;
+import com.example.tasker.ui.loginSignUp.login_regular;
 import com.example.tasker.models.userGettersSetters;
-import com.github.mikephil.charting.data.BarEntry;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.firebase.database.DataSnapshot;
@@ -29,7 +28,6 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
-import java.util.Arrays;
 import java.util.Objects;
 
 

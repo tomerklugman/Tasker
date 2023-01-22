@@ -15,7 +15,7 @@
         android:theme="@style/Theme.Tasker"
         tools:targetApi="31">
         <activity
-            android:name=".loginSignUp.GoogleChildParentPick"
+            android:name=".ui.loginSignUp.GoogleChildParentPick"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
@@ -64,21 +64,21 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".loginSignUp.Child_After_login_JoinHouse"
+            android:name=".utils.Child_After_login_JoinHouse"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".loginSignUp.Parent_After_Login_CreateJoinHouse"
+            android:name=".utils.Parent_After_Login_CreateJoinHouse"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".loginSignUp.login_regular"
+            android:name=".ui.loginSignUp.login_regular"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
@@ -92,7 +92,7 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".loginSignUp.MainLoginPage"
+            android:name=".ui.loginSignUp.MainLoginPage"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"

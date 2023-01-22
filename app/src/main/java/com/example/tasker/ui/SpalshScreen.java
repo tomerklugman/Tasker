@@ -7,7 +7,7 @@ import android.os.Bundle;
 import android.os.Handler;
 
 import com.example.tasker.R;
-import com.example.tasker.loginSignUp.MainLoginPage;
+import com.example.tasker.ui.loginSignUp.MainLoginPage;
 
 public class SpalshScreen extends AppCompatActivity {
 

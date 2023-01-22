@@ -11,7 +11,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.tasker.R;
-import com.example.tasker.loginSignUp.MainLoginPage;
+import com.example.tasker.ui.loginSignUp.MainLoginPage;
 import com.example.tasker.models.userGettersSetters;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
